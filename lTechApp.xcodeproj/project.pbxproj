@@ -17,6 +17,7 @@
 		71EE74F41DC0CD7700B03AC2 /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74F31DC0CD7700B03AC2 /* NetworkInterface.m */; };
 		71EE74F71DC0CF5800B03AC2 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74F61DC0CF5800B03AC2 /* UIColor+Custom.m */; };
 		71EE74FA1DC0CF6700B03AC2 /* UIFont+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74F91DC0CF6700B03AC2 /* UIFont+Custom.m */; };
+		71EE74FD1DC0DD1300B03AC2 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74FC1DC0DD1300B03AC2 /* DataManager.m */; };
 		75775297D08E53A6FFB06D21 /* libPods-lTechApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 789344CA44AF689727B3CA11 /* libPods-lTechApp.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,8 @@
 		71EE74F61DC0CF5800B03AC2 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
 		71EE74F81DC0CF6700B03AC2 /* UIFont+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Custom.h"; sourceTree = "<group>"; };
 		71EE74F91DC0CF6700B03AC2 /* UIFont+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Custom.m"; sourceTree = "<group>"; };
+		71EE74FB1DC0DD1300B03AC2 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		71EE74FC1DC0DD1300B03AC2 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		789344CA44AF689727B3CA11 /* libPods-lTechApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lTechApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CABAAB038DD5C4BEBCCF67 /* Pods-lTechApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lTechApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +144,8 @@
 		71EE74EA1DC0CA8D00B03AC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				71EE74FB1DC0DD1300B03AC2 /* DataManager.h */,
+				71EE74FC1DC0DD1300B03AC2 /* DataManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				71EE74F11DC0CD6A00B03AC2 /* Endpoints.m in Sources */,
 				71EE74FA1DC0CF6700B03AC2 /* UIFont+Custom.m in Sources */,
 				71EE74F41DC0CD7700B03AC2 /* NetworkInterface.m in Sources */,
+				71EE74FD1DC0DD1300B03AC2 /* DataManager.m in Sources */,
 				71EE74F71DC0CF5800B03AC2 /* UIColor+Custom.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,
 			);
@@ -365,7 +371,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/prefix.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -409,7 +415,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/prefix.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -428,8 +434,8 @@
 			baseConfigurationReference = 3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/prefix.pch";
 				INFOPLIST_FILE = lTechApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = home.Necrosoft.lTechApp;
@@ -442,8 +448,8 @@
 			baseConfigurationReference = D3CABAAB038DD5C4BEBCCF67 /* Pods-lTechApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/prefix.pch";
 				INFOPLIST_FILE = lTechApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = home.Necrosoft.lTechApp;

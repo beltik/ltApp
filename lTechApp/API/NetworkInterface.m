@@ -2,9 +2,6 @@
 //  NetworkInterface.m
 //  medsolutions
 //
-//  Created by Eugene Matveev on 18.12.15.
-//  Copyright © 2015 medsolutions.ru. All rights reserved.
-//
 
 #import "NetworkInterface.h"
 

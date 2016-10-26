@@ -11,6 +11,7 @@
 
 #import "UIColor+Custom.h"
 #import "UIFont+Custom.h"
+#import "NetworkInterface.h"
 
 #else
 
