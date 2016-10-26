@@ -14,9 +14,11 @@
 		71EE74D41DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74D21DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld */; };
 		71EE74D61DC0BA3C00B03AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EE74D51DC0BA3C00B03AC2 /* Assets.xcassets */; };
 		71EE74D91DC0BA3C00B03AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EE74D71DC0BA3C00B03AC2 /* LaunchScreen.storyboard */; };
+		75775297D08E53A6FFB06D21 /* libPods-lTechApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 789344CA44AF689727B3CA11 /* libPods-lTechApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lTechApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE74C31DC0BA3B00B03AC2 /* lTechApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lTechApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EE74C71DC0BA3C00B03AC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		71EE74D51DC0BA3C00B03AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71EE74D81DC0BA3C00B03AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71EE74DA1DC0BA3C00B03AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		789344CA44AF689727B3CA11 /* libPods-lTechApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lTechApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CABAAB038DD5C4BEBCCF67 /* Pods-lTechApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lTechApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75775297D08E53A6FFB06D21 /* libPods-lTechApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54572AC7D823D81FC0E1A855 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				789344CA44AF689727B3CA11 /* libPods-lTechApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		71EE74BA1DC0BA3B00B03AC2 = {
 			isa = PBXGroup;
 			children = (
 				71EE74C51DC0BA3C00B03AC2 /* lTechApp */,
 				71EE74C41DC0BA3B00B03AC2 /* Products */,
+				7AF430D5D9C0E0DD35BC8CC7 /* Pods */,
+				54572AC7D823D81FC0E1A855 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +97,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7AF430D5D9C0E0DD35BC8CC7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */,
+				D3CABAAB038DD5C4BEBCCF67 /* Pods-lTechApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71EE74DD1DC0BA3C00B03AC2 /* Build configuration list for PBXNativeTarget "lTechApp" */;
 			buildPhases = (
+				9198E2F7183DF508B1D27E87 /* [CP] Check Pods Manifest.lock */,
 				71EE74BF1DC0BA3B00B03AC2 /* Sources */,
 				71EE74C01DC0BA3B00B03AC2 /* Frameworks */,
 				71EE74C11DC0BA3B00B03AC2 /* Resources */,
+				6EBEF142646E19147F02FB95 /* [CP] Embed Pods Frameworks */,
+				02F22D8D0571BD98E4FE5F40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +173,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02F22D8D0571BD98E4FE5F40 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EBEF142646E19147F02FB95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9198E2F7183DF508B1D27E87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		71EE74BF1DC0BA3B00B03AC2 /* Sources */ = {
@@ -265,6 +340,7 @@
 		};
 		71EE74DE1DC0BA3C00B03AC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = lTechApp/Info.plist;
@@ -276,6 +352,7 @@
 		};
 		71EE74DF1DC0BA3C00B03AC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3CABAAB038DD5C4BEBCCF67 /* Pods-lTechApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = lTechApp/Info.plist;
@@ -304,6 +381,7 @@
 				71EE74DF1DC0BA3C00B03AC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
