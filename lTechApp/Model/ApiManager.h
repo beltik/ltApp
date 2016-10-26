@@ -6,11 +6,10 @@
 //  Copyright © 2016 home. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface DataManager : NSObject
+@interface ApiManager : NSObject
 
--(void)saveJSONDataToCD:(NSArray*)data;
--(NSArray*)getItems;
+-(void)getItemsWithEndpoints:(NSString*)endpoint;
 
 @end

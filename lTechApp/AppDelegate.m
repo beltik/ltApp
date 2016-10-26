@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ApiManager.h"
 #import "DataManager.h"
 
 @interface AppDelegate ()
@@ -18,9 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    DataManager *mgr = [[DataManager alloc]init];
+    ApiManager *mgr = [[ApiManager alloc]init];
+    DataManager *dMgr = [DataManager new];
     [mgr getItemsWithEndpoints:nil];
-    
+   
+    NSArray *arr = [NSArray new];
+    arr = [dMgr getItems];
     
     
     

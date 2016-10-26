@@ -15,7 +15,7 @@
 #import <Masonry/Masonry.h>
 #import "Constants.h"
 #import "NetworkInterface.h"
-
+#import <CoreData/CoreData.h>
 
 #endif
 
