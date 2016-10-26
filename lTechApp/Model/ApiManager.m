@@ -21,6 +21,7 @@
         // Get data
         NSLog(@"data %@", responseObject);
         NSLog(@"resp class %@", [responseObject class]);
+        NSLog(@"resp count %lu", (unsigned long)[responseObject count]);
         
         // Map data
         DataManager *dMgr = [[DataManager alloc]init];

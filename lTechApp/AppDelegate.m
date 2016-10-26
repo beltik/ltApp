@@ -23,10 +23,15 @@
     DataManager *dMgr = [DataManager new];
     [mgr getItemsWithEndpoints:nil];
    
-    NSArray *arr = [NSArray new];
-    arr = [dMgr getItems];
+//    NSArray *arr = [NSArray new];
+//    arr = [dMgr getItems];
     
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        NSArray *arr = [NSArray new];
+        arr = [dMgr getItems];
+        NSLog(@"arr count %lu", (unsigned long)arr.count);
+
+    });
     
     return YES;
 }

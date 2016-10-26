@@ -33,8 +33,6 @@
 
 -(void)saveJSONDataToCD:(NSArray *)data{
     
-    
-    
     [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         /* Save JSON response to Core Data */
@@ -42,12 +40,12 @@
         
         /* Create a new managed object */
         NSManagedObject *item = [NSEntityDescription insertNewObjectForEntityForName:CD_ENTITY inManagedObjectContext:context];
-        [item setValue:[obj valueForKey:JS_IMAGE] forKey:CD_IMAGE];
+        [item setValue:[obj valueForKey:JS_IMAGE] == [NSNull null] ? @"no_image" : [obj valueForKey:JS_IMAGE] forKey:CD_IMAGE];
         [item setValue:[self dateFromResponseString:[obj valueForKey:JS_DATE]] forKey:CD_DATE];
-        [item setValue:[obj valueForKey:JS_ID] forKey:CD_ID];
-        [item setValue:[obj valueForKey:JS_SORT] forKey:CD_SORT];
-        [item setValue:[obj valueForKey:JS_DESCRIPTION] forKey:CD_DESCRIPTION];
-        [item setValue:[obj valueForKey:JS_TITLE] forKey:CD_TITLE];
+        [item setValue:[obj valueForKey:JS_ID] == [NSNull null] ? @(0) : [obj valueForKey:JS_ID] forKey:CD_ID];
+        [item setValue:[obj valueForKey:JS_SORT] == [NSNull null] ? @(0) : [obj valueForKey:JS_SORT] forKey:CD_SORT];
+        [item setValue:[obj valueForKey:JS_DESCRIPTION] == [NSNull null] ? @"no_description" : [obj valueForKey:JS_DESCRIPTION] forKey:CD_DESCRIPTION];
+        [item setValue:[obj valueForKey:JS_TITLE] == [NSNull null] ? @"no_title" : [obj valueForKey:JS_TITLE] forKey:CD_TITLE];
 
         
         NSError *error = nil;
@@ -59,13 +57,12 @@
         
     }];
  
-    
-    
 }
 
 -(NSArray*)getItems{
     
-    // Fetch the devices from persistent data store
+    /* Fetch objects from persistent data store */
+    
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:CD_ENTITY];
     return [managedObjectContext executeFetchRequest:fetchRequest error:nil];
