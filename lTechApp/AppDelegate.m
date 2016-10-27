@@ -34,6 +34,9 @@
 
     });
     
+    NSArray *tst = @[];
+    tst = [dMgr storedItems];
+    
     return YES;
 }
 

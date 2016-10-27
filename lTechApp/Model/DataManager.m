@@ -33,7 +33,7 @@
     
     /* Old */
     
-  //  old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:data];
+    old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
     
     /* Modified */
     
@@ -42,19 +42,20 @@
     [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         /* Mapping */
-        ItemModel *mdl = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:obj error:nil];
+        NSError *errorMdl;
+        ItemModel *mdl = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:obj error:&errorMdl];
         
         /* Save JSON response to Core Data */
         NSManagedObjectContext *context = [self managedObjectContext];
         
         /* Create a new managed object */
         NSManagedObject *item = [NSEntityDescription insertNewObjectForEntityForName:CD_ENTITY inManagedObjectContext:context];
-        [item setValue:mdl.itemImageLink.length > 0 ? @"no_image" : mdl.itemImageLink forKey:CD_IMAGE];
+        [item setValue:mdl.itemImageLink.length > 0 ? mdl.itemImageLink : @"no_image" forKey:CD_IMAGE];
         [item setValue:mdl.itemDate forKey:CD_DATE];
         [item setValue:mdl.itemId forKey:CD_ID];
         [item setValue:mdl.itemSort forKey:CD_SORT];
-        [item setValue:mdl.itemText.length > 0 ? @"no_text" :mdl.itemText forKey:CD_FULL_TEXT];
-        [item setValue:mdl.itemTitle.length > 0 ? @"no_title" :mdl.itemTitle forKey:CD_TITLE];
+        [item setValue:mdl.itemText.length > 0 ? mdl.itemText : @"no_text" forKey:CD_FULL_TEXT];
+        [item setValue:mdl.itemTitle.length > 0 ? mdl.itemTitle : @"no_title" forKey:CD_TITLE];
 
         
         NSError *error = nil;
@@ -81,11 +82,11 @@
     [storedArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
        
         ItemModel *mdl = [ItemModel new];
-      //  [mdl populateWithManagedObject:obj];
+        [mdl populateWithManagedObject:obj];
         [mutArr addObject:mdl];
     }];
     
-    return storedArr;
+    return mutArr;
 }
 
 #pragma mark - comparsion
@@ -99,10 +100,10 @@
         [oldItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger oldIidx, BOOL * _Nonnull stop) {
             
             ItemModel *oldItem, *newItem;
-            oldItem = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:obj error:nil];
+            oldItem = oldItems[oldIidx];
             newItem = newItems[idx];
             
-         //   if ([oldItem isSameId:newItem])
+            if ([oldItem isSameId:newItem])
                 [mutArr addObject:oldItem];
             }];
     }];
@@ -112,12 +113,22 @@
 
 
 
-
-
-
-
-
 #pragma mark - common
+
+-(NSArray*)itemsFromJSONResponse:(NSArray*)response{
+    
+    NSMutableArray *mutArr = @[].mutableCopy;
+    
+    [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSError *errorMdl;
+        ItemModel *mdl = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:obj error:&errorMdl];
+        [mutArr addObject:mdl];
+    }];
+    
+    return [NSArray arrayWithArray:mutArr];
+}
+
 
 - (NSManagedObjectContext *)managedObjectContext
 {

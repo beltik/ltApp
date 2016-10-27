@@ -48,7 +48,7 @@ static NSDateFormatter *df;
 + (NSValueTransformer *)JSONTransformerForKey:(NSString *)key {
     
     if (
-        [key isEqualToString:@"date"]
+        [key isEqualToString:@"itemDate"]
         ) {
         if(!df){
             df = [[NSDateFormatter alloc] init];
