@@ -9,5 +9,7 @@ pod 'AFNetworking'
 pod 'AFNetworking-RACExtensions'
 pod 'Masonry'
 pod 'MBProgressHUD'
+pod 'Mantle'
+
 
 end

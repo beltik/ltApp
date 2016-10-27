@@ -11,6 +11,6 @@
 @interface DataManager : NSObject
 
 -(void)saveJSONDataToCD:(NSArray*)data;
--(NSArray*)getItems;
+-(NSArray*)storedItems;
 
 @end

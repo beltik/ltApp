@@ -9,6 +9,8 @@
 #import "ApiManager.h"
 #import "Endpoints.h"
 #import "DataManager.h"
+#import "ItemModel.h"
+
 
 @implementation ApiManager
 
@@ -24,8 +26,12 @@
         NSLog(@"resp count %lu", (unsigned long)[responseObject count]);
         
         // Map data
-        DataManager *dMgr = [[DataManager alloc]init];
-        [dMgr saveJSONDataToCD:responseObject];
+      //  ItemModel *iMdl = [[ItemModel alloc]initWithDictionary:responseObject[0] error:nil];
+        ItemModel *mdl = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:responseObject[0] error:nil];
+
+        
+//        DataManager *dMgr = [[DataManager alloc]init];
+//        [dMgr saveJSONDataToCD:responseObject];
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

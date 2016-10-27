@@ -56,10 +56,9 @@
         }
         
     }];
- 
 }
 
--(NSArray*)getItems{
+-(NSArray*)storedItems{
     
     /* Fetch objects from persistent data store */
     
@@ -68,7 +67,28 @@
     return [managedObjectContext executeFetchRequest:fetchRequest error:nil];
 }
 
+#pragma mark - verification methods
 
+-(NSArray*)oldItemsWhichUpToDate:(NSArray*)oldItems andNewItems:(NSArray*)newItems{
+    
+    NSMutableArray *mutArr = @[].mutableCopy;
+    
+    [newItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        [oldItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger oldIidx, BOOL * _Nonnull stop) {
+            
+            NSNumber *oldItemID, *newItemID;
+            oldItemID = oldItems[oldIidx];
+            newItemID = newItems[idx];
+            
+            if ([oldItemID integerValue] == [newItemID integerValue])
+                [mutArr addObject:oldItems[oldIidx]];
+        }];
+        
+    }];
+    
+    return [NSArray arrayWithArray:mutArr];
+}
 
 
 
