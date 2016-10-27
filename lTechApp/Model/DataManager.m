@@ -36,6 +36,8 @@
     if (self.storedItems.count > 0)
     old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
     
+    [self addAndUpdateItems:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
+    
     /* Modified */
     
     /* New */
@@ -92,6 +94,55 @@
 
 #pragma mark - comparsion
 
+#pragma mark - new
+
+-(NSArray*)addAndUpdateItems:(NSArray*)oldItems andNewItems:(NSArray*)newItems{
+    
+    NSMutableArray *mutArr = @[].mutableCopy;
+    
+    [newItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [oldItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger oldIidx, BOOL * _Nonnull stop) {
+            
+            ItemModel *oldItem, *newItem;
+            oldItem = oldItems[oldIidx];
+            newItem = newItems[idx];
+            
+            /* Если объект из старого массива не равен объекту из нового массива он новый. Добавляем его, если он уже не был добавлен в результирующий массив */
+            
+            if ([oldItem isSameId:newItem]){
+                
+                /* Объект уже есть. Проверяем на необходимость обновления */
+                if (![oldItem isSameText:newItem]){
+                    
+                    /* Обновляем объект в базе */
+                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+                    [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", newItem.itemId];
+                    [request setPredicate:predicate];
+                    
+                    NSError *error;
+                    NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
+                    NSLog(@"result %@", results[0]);
+                    NSLog(@"result count %i", results.count);
+                    
+
+                }
+            }   else {
+                
+                /* Добавляем новый объект */
+                
+                if (![mutArr containsObject:newItem])
+                    [mutArr addObject:newItem];
+            }
+            
+            
+        }];
+    }];
+    
+    return [NSArray arrayWithArray:mutArr];
+}
+
 
 
 -(NSArray*)addedItems:(NSArray*)oldItems andNewItems:(NSArray*)newItems{
@@ -110,11 +161,10 @@
             
             if (![mutArr containsObject:newItem]){
                 
-                
             if (![oldItem isEqual:newItem])
                 [mutArr addObject:oldItem];
             }
-            
+        
         }];
     }];
     
