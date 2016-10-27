@@ -22,5 +22,6 @@
 -(BOOL)isSameText:(id)object;
 
 -(void)populateWithManagedObject:(id)managedObject;
+-(void)updateProperties:(id)newObject;
 
 @end

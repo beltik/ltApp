@@ -127,7 +127,9 @@
                     NSLog(@"resultsPredic %@", results);
                   
                     /* Обновляем параметры */
-                    
+                    if (results.count > 0)
+                    [self updateObject:results[0] withItem:newItem];
+    
                 }
             }   else {
                 
@@ -201,7 +203,7 @@
                 NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
                 if (!error && results.count > 0) {
                     for(NSManagedObject *managedObject in results){
-                     //   [[self managedObjectContext] deleteObject:managedObject];
+                        [[self managedObjectContext] deleteObject:managedObject];
                     }
                     //Save context to write to store
                     [[self managedObjectContext] save:nil];
@@ -215,7 +217,15 @@
     return [NSArray arrayWithArray:mutArr];
 }
 
+#pragma mark - convinience
 
+-(void)updateObject:(NSManagedObject*)managedObject withItem:(ItemModel*)item{
+    
+    [managedObject setValue:item.itemImageLink.length > 0 ? item.itemImageLink : @"no_image" forKey:CD_IMAGE];
+    [managedObject setValue:item.itemText.length > 0 ? item.itemText : @"no_text" forKey:CD_FULL_TEXT];
+    [managedObject setValue:item.itemTitle.length > 0 ? item.itemTitle : @"no_title" forKey:CD_TITLE];
+    
+}
 
 #pragma mark - common
 

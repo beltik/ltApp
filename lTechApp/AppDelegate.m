@@ -53,6 +53,7 @@
 
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "home.Necrosoft.lTechApp" in the application's documents directory.
+    NSLog(@"%@ path-core",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory  inDomains:NSUserDomainMask] lastObject]);
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
@@ -94,6 +95,7 @@
     
     return _persistentStoreCoordinator;
 }
+
 
 
 - (NSManagedObjectContext *)managedObjectContext {
