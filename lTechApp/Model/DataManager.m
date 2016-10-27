@@ -36,7 +36,7 @@
   // if (self.storedItems.count > 0)
   //  old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
     
-    [self addAndUpdateItems:[self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]] andNewItems:[self itemsFromJSONResponse:data]];
+   [self addAndUpdateItems:[self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]] andNewItems:[self itemsFromJSONResponse:data]];
     
     /* Modified */
     
@@ -116,17 +116,18 @@
                 if (![oldItem isSameText:newItem]){
                     
                     /* Обновляем объект в базе */
+                    /* Получаем объект из базы */
                     NSFetchRequest *request = [[NSFetchRequest alloc] init];
                     [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
-                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", newItem.itemId];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", [newItem.itemId integerValue]];
                     [request setPredicate:predicate];
                     
                     NSError *error;
                     NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
-                    NSLog(@"result %@", results[0]);
-                    NSLog(@"result count %lu", (unsigned long)results.count);
+                    NSLog(@"resultsPredic %@", results);
+                  
+                    /* Обновляем параметры */
                     
-
                 }
             }   else {
                 
@@ -184,8 +185,30 @@
             oldItem = oldItems[oldIidx];
             newItem = newItems[idx];
             
-            if ([oldItem isSameId:newItem])
+            if ([oldItem isSameId:newItem]){
+                /* Объект не устарел и присутствует в новой выборке */
                 [mutArr addObject:oldItem];
+                
+            }   else {
+                
+                /* Объект устарел, его нужно удалить */
+                NSFetchRequest *request = [[NSFetchRequest alloc] init];
+                [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", [newItem.itemId integerValue]];
+                [request setPredicate:predicate];
+                
+                NSError *error;
+                NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
+                if (!error && results.count > 0) {
+                    for(NSManagedObject *managedObject in results){
+                     //   [[self managedObjectContext] deleteObject:managedObject];
+                    }
+                    //Save context to write to store
+                    [[self managedObjectContext] save:nil];
+                }
+            }
+            
+            
             }];
     }];
     
