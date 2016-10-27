@@ -17,4 +17,6 @@
 @property (nonatomic, strong) NSString *itemTitle;
 @property (nonatomic, strong) NSString *itemText;
 
+-(BOOL)isSameId:(id)object;
+
 @end

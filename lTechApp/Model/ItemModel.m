@@ -80,7 +80,28 @@ static NSDateFormatter *df;
     return [df dateFromString:dateString];
 }
 
+#pragma mark - comparsion
 
+-(BOOL)isEqual:(ItemModel*)object{
+    
+    if  (([self.itemDate isEqualToDate:object.itemDate]) &&
+        ([self.itemId integerValue] == [object.itemId integerValue]) &&
+        ([self.itemImageLink isEqualToString:object.itemImageLink]) &&
+        ([self.itemSort integerValue] == [object.itemSort integerValue]) &&
+        ([self.itemTitle isEqualToString:object.itemTitle]) &&
+        ([self.itemText isEqualToString:object.itemText]))
+        return YES;
+    else
+        return NO;
+}
+
+-(BOOL)isSameId:(ItemModel*)object{
+    
+   if ([self.itemId integerValue] == [object.itemId integerValue])
+        return YES;
+    else
+        return NO;
+}
 
 
 

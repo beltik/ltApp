@@ -7,6 +7,7 @@
 //
 
 #import "DataManager.h"
+#import "ItemModel.h"
 
 @implementation DataManager
 
@@ -18,7 +19,7 @@
 #define CD_DATE @"itemDate"
 #define CD_ID @"itemId"
 #define CD_SORT @"itemSortOrder"
-#define CD_DESCRIPTION @"itemText"
+#define CD_FULL_TEXT @"itemText"
 #define CD_TITLE @"itemTitle"
 
 /* JSON response */
@@ -27,7 +28,7 @@
 #define JS_DATE @"date"
 #define JS_ID @"id"
 #define JS_SORT @"sort"
-#define JS_DESCRIPTION @"text"
+#define JS_FULL_TEXT @"text"
 #define JS_TITLE @"title"
 
 
@@ -35,17 +36,20 @@
     
     [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
+        /* Mapping */
+        ItemModel *mdl = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:obj error:nil];
+        
         /* Save JSON response to Core Data */
         NSManagedObjectContext *context = [self managedObjectContext];
         
         /* Create a new managed object */
         NSManagedObject *item = [NSEntityDescription insertNewObjectForEntityForName:CD_ENTITY inManagedObjectContext:context];
-        [item setValue:[obj valueForKey:JS_IMAGE] == [NSNull null] ? @"no_image" : [obj valueForKey:JS_IMAGE] forKey:CD_IMAGE];
-        [item setValue:[self dateFromResponseString:[obj valueForKey:JS_DATE]] forKey:CD_DATE];
-        [item setValue:[obj valueForKey:JS_ID] == [NSNull null] ? @(0) : [obj valueForKey:JS_ID] forKey:CD_ID];
-        [item setValue:[obj valueForKey:JS_SORT] == [NSNull null] ? @(0) : [obj valueForKey:JS_SORT] forKey:CD_SORT];
-        [item setValue:[obj valueForKey:JS_DESCRIPTION] == [NSNull null] ? @"no_description" : [obj valueForKey:JS_DESCRIPTION] forKey:CD_DESCRIPTION];
-        [item setValue:[obj valueForKey:JS_TITLE] == [NSNull null] ? @"no_title" : [obj valueForKey:JS_TITLE] forKey:CD_TITLE];
+        [item setValue:mdl.itemImageLink.length > 0 ? @"no_image" : mdl.itemImageLink forKey:CD_IMAGE];
+        [item setValue:mdl.itemDate forKey:CD_DATE];
+        [item setValue:mdl.itemId forKey:CD_ID];
+        [item setValue:mdl.itemSort forKey:CD_SORT];
+        [item setValue:mdl.itemText.length > 0 ? @"no_text" :mdl.itemText forKey:CD_FULL_TEXT];
+        [item setValue:mdl.itemTitle.length > 0 ? @"no_title" :mdl.itemTitle forKey:CD_TITLE];
 
         
         NSError *error = nil;
@@ -110,20 +114,6 @@ context = [delegate managedObjectContext];
 }
 return context;
 }
-
-#pragma mark - converting
-
--(NSDate*)dateFromResponseString:(NSString*)str{
-    
-    NSDateFormatter *df = [NSDateFormatter new];
-    df.dateFormat = @"YYYY-MM-dd HH-mm-ss";
-    NSDate *date = [df dateFromString:str];
-    return date;
-}
-
-
-
-
 
 
 
