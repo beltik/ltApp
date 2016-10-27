@@ -33,10 +33,10 @@
     
     /* Old */
     
-    if (self.storedItems.count > 0)
-    old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
+  // if (self.storedItems.count > 0)
+  //  old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
     
-    [self addAndUpdateItems:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
+    [self addAndUpdateItems:[self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]] andNewItems:[self itemsFromJSONResponse:data]];
     
     /* Modified */
     
@@ -124,7 +124,7 @@
                     NSError *error;
                     NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
                     NSLog(@"result %@", results[0]);
-                    NSLog(@"result count %i", results.count);
+                    NSLog(@"result count %lu", (unsigned long)results.count);
                     
 
                 }
