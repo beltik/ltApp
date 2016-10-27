@@ -29,8 +29,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         NSArray *arr = [NSArray new];
         arr = [dMgr storedItems];
-        NSLog(@"arr count %lu", (unsigned long)arr.count);
-        NSLog(@"arr class %@ arr value", arr[0]);
 
     });
     

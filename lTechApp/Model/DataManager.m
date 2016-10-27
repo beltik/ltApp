@@ -33,6 +33,7 @@
     
     /* Old */
     
+    if (self.storedItems.count > 0)
     old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:[self itemsFromJSONResponse:data]];
     
     /* Modified */
@@ -91,7 +92,37 @@
 
 #pragma mark - comparsion
 
+
+
+-(NSArray*)addedItems:(NSArray*)oldItems andNewItems:(NSArray*)newItems{
+    
+    NSMutableArray *mutArr = @[].mutableCopy;
+    
+    [newItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [oldItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger oldIidx, BOOL * _Nonnull stop) {
+            
+            ItemModel *oldItem, *newItem;
+            oldItem = oldItems[oldIidx];
+            newItem = newItems[idx];
+            
+            /* Если объект из старого массива не равен объекту из нового массива он новый. Добавляем его, если он уже не был добавлен в результирующий массив */
+            
+            if (![mutArr containsObject:newItem]){
+                
+                
+            if (![oldItem isEqual:newItem])
+                [mutArr addObject:oldItem];
+            }
+            
+        }];
+    }];
+    
+    return [NSArray arrayWithArray:mutArr];
+}
+
 -(NSArray*)oldItemsWhichUpToDate:(NSArray*)oldItems andNewItems:(NSArray*)newItems{
+    
     
     NSMutableArray *mutArr = @[].mutableCopy;
     
