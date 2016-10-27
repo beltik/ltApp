@@ -30,6 +30,7 @@
         NSArray *arr = [NSArray new];
         arr = [dMgr storedItems];
         NSLog(@"arr count %lu", (unsigned long)arr.count);
+        NSLog(@"arr class %@ arr value", arr[0]);
 
     });
     

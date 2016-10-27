@@ -13,14 +13,6 @@
 
 #define CD_ENTITY @"Item" /* Entity name */
 
-/* Core data entity properties */
-
-#define CD_IMAGE @"imageLink"
-#define CD_DATE @"itemDate"
-#define CD_ID @"itemId"
-#define CD_SORT @"itemSortOrder"
-#define CD_FULL_TEXT @"itemText"
-#define CD_TITLE @"itemTitle"
 
 /* JSON response */
 
@@ -33,6 +25,19 @@
 
 
 -(void)saveJSONDataToCD:(NSArray *)data{
+    
+    NSArray *old, *modif, *new;
+    old = @[];
+    modif = @[];
+    new = @[];
+    
+    /* Old */
+    
+  //  old = [self oldItemsWhichUpToDate:[self storedItems] andNewItems:data];
+    
+    /* Modified */
+    
+    /* New */
     
     [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
@@ -65,36 +70,45 @@
 -(NSArray*)storedItems{
     
     /* Fetch objects from persistent data store */
-    
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:CD_ENTITY];
-    return [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    /* Back to model */
+    NSArray *storedArr = @[];
+    NSMutableArray *mutArr = @[].mutableCopy;
+    storedArr = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    [storedArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        ItemModel *mdl = [ItemModel new];
+      //  [mdl populateWithManagedObject:obj];
+        [mutArr addObject:mdl];
+    }];
+    
+    return storedArr;
 }
 
-#pragma mark - verification methods
+#pragma mark - comparsion
 
 -(NSArray*)oldItemsWhichUpToDate:(NSArray*)oldItems andNewItems:(NSArray*)newItems{
     
     NSMutableArray *mutArr = @[].mutableCopy;
     
     [newItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-       
+        
         [oldItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger oldIidx, BOOL * _Nonnull stop) {
             
-            NSNumber *oldItemID, *newItemID;
-            oldItemID = oldItems[oldIidx];
-            newItemID = newItems[idx];
+            ItemModel *oldItem, *newItem;
+            oldItem = [MTLJSONAdapter modelOfClass:[ItemModel class] fromJSONDictionary:obj error:nil];
+            newItem = newItems[idx];
             
-            if ([oldItemID integerValue] == [newItemID integerValue])
-                [mutArr addObject:oldItems[oldIidx]];
-        }];
-        
+         //   if ([oldItem isSameId:newItem])
+                [mutArr addObject:oldItem];
+            }];
     }];
     
     return [NSArray arrayWithArray:mutArr];
 }
-
-
 
 
 

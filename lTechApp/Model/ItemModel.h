@@ -18,5 +18,9 @@
 @property (nonatomic, strong) NSString *itemText;
 
 -(BOOL)isSameId:(id)object;
+-(BOOL)isSameTitle:(id)object;
+-(BOOL)isSameText:(id)object;
+
+-(void)populateWithManagedObject:(id)managedObject;
 
 @end

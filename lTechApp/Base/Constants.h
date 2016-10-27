@@ -19,5 +19,14 @@
 
 #define NAVBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
 
+/* Core data entity properties */
+
+#define CD_IMAGE @"imageLink"
+#define CD_DATE @"itemDate"
+#define CD_ID @"itemId"
+#define CD_SORT @"itemSortOrder"
+#define CD_FULL_TEXT @"itemText"
+#define CD_TITLE @"itemTitle"
+
 
 #endif

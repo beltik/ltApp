@@ -9,13 +9,6 @@
 
 @implementation ItemModel
 
-//@property (nonatomic, strong) NSDate *itemDate;
-//@property (nonatomic, strong) NSNumber *itemId;
-//@property (nonatomic, strong) NSString *itemImageLink;
-//@property (nonatomic, strong) NSNumber *itemSort;
-//@property (nonatomic, strong) NSString *itemTitle;
-//@property (nonatomic, strong) NSString *itemText;
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {
     self = [super initWithDictionary:dictionaryValue error:error];
     if (self == nil) return nil;
@@ -80,6 +73,18 @@ static NSDateFormatter *df;
     return [df dateFromString:dateString];
 }
 
+-(void)populateWithManagedObject:(id)managedObject{
+    
+    self.itemDate = [managedObject valueForKey:CD_DATE];
+    self.itemId = [managedObject valueForKey:CD_ID];
+    self.itemImageLink = [managedObject valueForKey:CD_IMAGE];
+    self.itemSort = [managedObject valueForKey:CD_SORT];
+    self.itemTitle = [managedObject valueForKey:CD_TITLE];
+    self.itemText = [managedObject valueForKey:CD_FULL_TEXT];
+    
+    
+}
+
 #pragma mark - comparsion
 
 -(BOOL)isEqual:(ItemModel*)object{
@@ -103,10 +108,21 @@ static NSDateFormatter *df;
         return NO;
 }
 
+-(BOOL)isSameTitle:(ItemModel*)object{
+    
+    if ([self.itemTitle isEqualToString:object.itemTitle])
+        return YES;
+    else
+        return NO;
+}
 
-
-
-
+-(BOOL)isSameText:(ItemModel*)object{
+    
+    if ([self.itemText isEqualToString:object.itemText])
+        return YES;
+    else
+        return NO;
+}
 
 
 
