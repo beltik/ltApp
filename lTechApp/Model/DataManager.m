@@ -92,7 +92,6 @@
             
             if ([oldItem isSameId:newItem]){
                 
-                NSLog(@"AAAAA");
               isHaveNewObject = NO;
                 
                 /* Объект уже есть. Проверяем на необходимость обновления */
@@ -109,8 +108,11 @@
                     NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
                   
                     /* Обновляем параметры */
-                    if (results.count > 0)
+                    if (results.count > 0){
+                        
+                        NSLog(@"entered here");
                     [self updateObject:results[0] withItem:newItem];
+                    }
     
                 }
                 
@@ -126,48 +128,6 @@
         
     }];
     
-    
-//        for (int o = 0; o < oldItems.count; o ++) {
-//            
-//            for (int i = 0 ; i < newItems.count; i++) {
-//
-//            
-//            /* Если объект из старого массива не равен объекту из нового массива он новый. Добавляем его, если он уже не был добавлен в результирующий массив */
-//
-//            ItemModel *oldItem, *newItem;
-//            oldItem = oldItems[o];
-//            newItem = newItems[i];
-//
-//            if ([oldItem isSameId:newItem]){
-//                
-//                /* Объект уже есть. Проверяем на необходимость обновления */
-//                if (![oldItem isSameText:newItem]){
-//                    
-//                    /* Обновляем объект в базе */
-//                    /* Получаем объект из базы */
-//                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//                    [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
-//                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", [newItem.itemId integerValue]];
-//                    [request setPredicate:predicate];
-//                    
-//                    NSError *error;
-//                    NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
-//                    
-//                    /* Обновляем параметры */
-//                    if (results.count > 0)
-//                        [self updateObject:results[0] withItem:newItem];
-//                    
-//                }
-//            }   else {
-//                
-//                /* Объекта с таким ID не найдено. Добавляем новый объект */
-//                if (newItems.count == i)
-//                [self addRecordWithItem:newItem];
-//            }
-//            
-//        }
-//        
-//    }
 }
 
 
@@ -278,6 +238,11 @@
     [managedObject setValue:item.itemImageLink.length > 0 ? item.itemImageLink : @"no_image" forKey:CD_IMAGE];
     [managedObject setValue:item.itemText.length > 0 ? item.itemText : @"no_text" forKey:CD_FULL_TEXT];
     [managedObject setValue:item.itemTitle.length > 0 ? item.itemTitle : @"no_title" forKey:CD_TITLE];
+    
+    NSError *error = nil;
+    if (![[self managedObjectContext] save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
     
 }
 
