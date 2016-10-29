@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7165713B1DC4B11100C3CB94 /* CDTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165713A1DC4B11100C3CB94 /* CDTableAdapter.m */; };
 		718165391DC0EDC100C5253E /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 718165381DC0EDC100C5253E /* DataManager.m */; };
 		7181653B1DC0F1E000C5253E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7181653A1DC0F1E000C5253E /* CoreData.framework */; };
 		7181653F1DC115AF00C5253E /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7181653E1DC115AF00C5253E /* ItemModel.m */; };
@@ -26,6 +27,12 @@
 
 /* Begin PBXFileReference section */
 		3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lTechApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp.debug.xcconfig"; sourceTree = "<group>"; };
+		716571391DC4B11100C3CB94 /* CDTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTableAdapter.h; sourceTree = "<group>"; };
+		7165713A1DC4B11100C3CB94 /* CDTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTableAdapter.m; sourceTree = "<group>"; };
+		7165713D1DC4B25300C3CB94 /* CDBaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDBaseViewModel.h; sourceTree = "<group>"; };
+		7165713E1DC4B25300C3CB94 /* CEReactiveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEReactiveView.h; sourceTree = "<group>"; };
+		7165713F1DC4B25300C3CB94 /* VMHeightProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMHeightProtocol.h; sourceTree = "<group>"; };
+		716571401DC4B46D00C3CB94 /* CDCellSizerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDCellSizerProtocol.h; sourceTree = "<group>"; };
 		718165371DC0EDC100C5253E /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		718165381DC0EDC100C5253E /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		7181653A1DC0F1E000C5253E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -78,6 +85,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		716571381DC4B10800C3CB94 /* CDRGeneral */ = {
+			isa = PBXGroup;
+			children = (
+				716571391DC4B11100C3CB94 /* CDTableAdapter.h */,
+				7165713A1DC4B11100C3CB94 /* CDTableAdapter.m */,
+			);
+			path = CDRGeneral;
+			sourceTree = "<group>";
+		};
+		7165713C1DC4B21500C3CB94 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				716571401DC4B46D00C3CB94 /* CDCellSizerProtocol.h */,
+				7165713D1DC4B25300C3CB94 /* CDBaseViewModel.h */,
+				7165713E1DC4B25300C3CB94 /* CEReactiveView.h */,
+				7165713F1DC4B25300C3CB94 /* VMHeightProtocol.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		71EE74BA1DC0BA3B00B03AC2 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +154,8 @@
 		71EE74E21DC0C9C700B03AC2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7165713C1DC4B21500C3CB94 /* Protocols */,
+				716571381DC4B10800C3CB94 /* CDRGeneral */,
 				71EE74E81DC0CA6100B03AC2 /* Categories */,
 				71EE74E31DC0C9D700B03AC2 /* Constants.h */,
 			);
@@ -331,6 +360,7 @@
 				7181653F1DC115AF00C5253E /* ItemModel.m in Sources */,
 				71EE74F71DC0CF5800B03AC2 /* UIColor+Custom.m in Sources */,
 				718165391DC0EDC100C5253E /* DataManager.m in Sources */,
+				7165713B1DC4B11100C3CB94 /* CDTableAdapter.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
