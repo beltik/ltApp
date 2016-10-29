@@ -135,41 +135,7 @@
     
     
     NSMutableArray *mutArr = @[].mutableCopy;
-    
-//    [newItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        
-//        [oldItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger oldIidx, BOOL * _Nonnull stop) {
-//            
-//            ItemModel *oldItem, *newItem;
-//            oldItem = oldItems[oldIidx];
-//            newItem = newItems[idx];
-//            
-//            if ([oldItem isSameId:newItem]){
-//                /* Объект не устарел и присутствует в новой выборке */
-//                [mutArr addObject:oldItem];
-//
-//                
-//            }   else {
-//                
-//                /* Объект устарел, его нужно удалить */
-//                NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//                [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
-//                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", [newItem.itemId integerValue]];
-//                [request setPredicate:predicate];
-//                
-//                NSError *error;
-//                NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
-//                if (!error && results.count > 0) {
-//                    for(NSManagedObject *managedObject in results){
-//                        [[self managedObjectContext] deleteObject:managedObject];
-//                    }
-//                    //Save context to write to store
-//                    [[self managedObjectContext] save:nil];
-//                }
-//            }
-//        }];
-//    }];
-    
+
     
     for (int i = 0; i < newItems.count; i++) {
         
