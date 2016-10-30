@@ -10,7 +10,7 @@
 #import "MainControllerViewModel.h"
 #import "CDTableAdapter.h"
 
-@interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) IBOutlet UISegmentedControl *segmentedControl;

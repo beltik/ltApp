@@ -8,10 +8,10 @@
 
 #import "MainViewController.h"
 #import "MainControllerViewModel.h"
+#import "ItemCell.h"
 
 @interface MainViewController ()
 
-@property (nonatomic) CDTableAdapter *tableAdapter;
 @property (nonatomic) MainControllerViewModel *viewModel;
 @property (nonatomic) NSFetchedResultsController *frc;
 @property (nonatomic, getter=getManagedObjectContext) NSManagedObjectContext *managedObjectContext;
@@ -21,6 +21,7 @@
 @implementation MainViewController
 
 #define BATCH_SIZE 20
+#define CELL_IDENTIFIER @"ItemCell"
 
 -(void)viewDidLoad{
     
@@ -37,31 +38,50 @@
     [self createTableView];
 }
 
-#pragma mark - table
+#pragma mark - table view
 
 -(void)createTableView{
-    
-    NSDictionary *dctEventsCellsMap =
-    @{
-      @"ItemCellVM":@"ItemCell"
-    };
-    
+
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.scrollEnabled = NO;
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [CDTableAdapter mapTableView:self.tableView cellsWithDictionary:dctEventsCellsMap];
+    self.tableView.estimatedRowHeight = 85.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    self.tableAdapter = [CDTableAdapter new];
-    self.tableAdapter.viewModel = self.viewModel;
-    self.tableAdapter.dctCellsMap = dctEventsCellsMap;
-    self.tableAdapter.defaultCellHeight = 66.;
-    self.tableView.dataSource = self.tableAdapter;
-    self.tableView.delegate = self.tableAdapter;
+    ItemCell *iCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
+    
+    if(!iCell){
+        iCell = [self.tableView dequeueReusableCellWithIdentifier:@"RefSelectorCell"];
+    }
+    
+    /* bind cell */
+//    NSDictionary *dct = self.arrValues[indexPath.section];
+//    offCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    offCell.header.text = dct[@"title"];
+//    offCell.subtitle.text = dct[@"subtitle"];
+    [iCell setNeedsUpdateConstraints];
+    [iCell updateConstraintsIfNeeded];
+    
+    iCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(iCell.bounds));
+    
+    [iCell setNeedsLayout];
+    [iCell layoutIfNeeded];
+    
+    CGFloat height = [iCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    height += 1.0f;
+    
+    return height;
     
 }
+
 
 
 #pragma mark - fetced results controller

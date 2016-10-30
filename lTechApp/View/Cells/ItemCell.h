@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCell.h"
 
-@interface ItemCell : UICollectionViewCell
+@interface ItemCell : BaseCell
 
 @end
