@@ -46,9 +46,10 @@
 -(void)createTableView{
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.scrollEnabled = NO;
-    self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 85.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -64,7 +65,7 @@
     }
     
     /* bind cell */
-    [iCell bindWithManagedObject:[_frc objectAtIndexPath:indexPath]];
+    [self configureCell:iCell atIndexPath:indexPath];
     
     [iCell setNeedsUpdateConstraints];
     [iCell updateConstraintsIfNeeded];
@@ -123,7 +124,6 @@
 
 - (NSFetchedResultsController *)frc {
     
-    NSLog(@"ever come here");
     if (_frc != nil) {
         return _frc;
     }

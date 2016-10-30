@@ -59,29 +59,69 @@
 
 -(void)createConstraints{
     
+//    [_lblTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//       
+//        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+//        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
+//        make.top.equalTo(self.contentView.mas_top).offset(OFFSET_SMALL);
+//        
+//    }];
+//    
+//    [_lblText mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+//        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
+//        make.bottom.equalTo(self.contentView.mas_top).offset(-OFFSET_SMALL);
+//    }];
+//    
+//    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+//       
+//        make.left.equalTo(self.contentView.mas_left).offset(8);
+//        make.height.with.equalTo(@(IMAGE_HEIGHT_WIDTH));
+//        make.centerY.equalTo(self.contentView.mas_centerY);
+//        
+//    }];
+    
     [_lblTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        
+        make.left.equalTo(self.contentView.mas_left).with.offset(OFFSET_MEDIUM);
         make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
         make.top.equalTo(self.contentView.mas_top).offset(OFFSET_SMALL);
-        
+        make.bottom.equalTo(_lblText.mas_top).with.offset(-OFFSET_MEDIUM);
     }];
     
     [_lblText mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        make.top.equalTo(_lblTitle.mas_bottom).with.offset(OFFSET_MEDIUM);
+        make.left.equalTo(self.contentView.mas_left).with.offset(OFFSET_MEDIUM);
         make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
-        make.bottom.equalTo(self.contentView.mas_top).offset(-OFFSET_SMALL);
+        make.bottom.equalTo(self.contentView.mas_bottom).offset(-OFFSET_SMALL);
     }];
-    
-    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.left.equalTo(self.contentView.mas_left).offset(8);
-        make.height.with.equalTo(@(IMAGE_HEIGHT_WIDTH));
-        make.centerY.equalTo(self.contentView.mas_centerY);
-        
-    }];
-    
 }
+
+-(void)layoutSubviews{
+    
+    [super layoutSubviews];
+    
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
+    
+    self.lblTitle.preferredMaxLayoutWidth = CGRectGetWidth(self.lblTitle.frame);
+    self.lblText.preferredMaxLayoutWidth = CGRectGetWidth(self.lblText.frame);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
