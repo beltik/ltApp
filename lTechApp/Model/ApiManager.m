@@ -14,23 +14,21 @@
 
 @implementation ApiManager
 
+-(RACSignal*)getItems{
+    
+    RACSignal *sign = [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
+    return sign;
+}
+
 -(void)getItemsWithEndpoints:(NSString*)endpoint{
     
-    
-    
-    [[NetworkInterface getManager] GET:[Endpoints endpoint] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+    RACSignal *sign = [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
+    [[sign throttle:0.25] subscribeNext:^(id x) {
         DataManager *dMgr = [[DataManager alloc]init];
-        [dMgr saveJSONDataToCD:responseObject];
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"Error!%@", error.localizedDescription);
-    }];
+        [dMgr saveJSONDataToCD:x];
+    } ];
 
 
-    
 }
 
 

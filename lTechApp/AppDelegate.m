@@ -18,22 +18,26 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    
     ApiManager *mgr = [[ApiManager alloc]init];
-    DataManager *dMgr = [DataManager new];
-    [mgr getItemsWithEndpoints:nil];
-   
-//    NSArray *arr = [NSArray new];
-//    arr = [dMgr getItems];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        NSArray *arr = [NSArray new];
-        arr = [dMgr storedItems];
-
-    });
+    [[mgr.getItems throttle:0.25] subscribeNext:^(RACTuple * x) {
+        
+        /* Handle error */
+        
+        NSHTTPURLResponse *response = x.second;
+        NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+        if (statusCode != 200) {
+            NSLog(@"Failed with HTTP status code: %ld", (long)statusCode);
+            return;
+        }
+        
+        /* Save items to Core Data */
+        
+        DataManager *dMgr = [[DataManager alloc]init];
+        [dMgr saveJSONDataToCD:x.first];
+    }];
     
-    NSArray *tst = @[];
-    tst = [dMgr storedItems];
     
     return YES;
 }

@@ -61,6 +61,11 @@
     self.navigationItem.rightBarButtonItem = self.bbiRefresh;
 }
 
+-(void)refresh{
+    
+
+}
+
 #pragma mark - table view
 
 -(void)createTableView{

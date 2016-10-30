@@ -10,6 +10,6 @@
 
 @interface ApiManager : NSObject
 
--(void)getItemsWithEndpoints:(NSString*)endpoint;
+-(RACSignal*)getItems;
 
 @end
