@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MainControllerViewModel.h"
-#import "CDTableAdapter.h"
 
 @interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 

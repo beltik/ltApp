@@ -7,104 +7,81 @@
 //
 
 #import "ItemCell.h"
+#import "Item.h"
+#import "UIImageView+AFNetworking.h"
 
-@implementation ItemCell
+@interface ItemCell ()
 
-@property (nonatomic) UILabel *titleLabel;
-@property (nonatomic) UILabel *codeLabel;
-@property (nonatomic) UIView *invisibleView;
+@property (nonatomic) UILabel *lblTitle;
+@property (nonatomic) UILabel *lblText;
+@property (nonatomic) UIImageView *imgView;
 
 @end
 
 #define OFFSET_SMALL 8
-#define OFFSET_MEDIUM 38
-#define OFFSET_LARGE 16
-#define OFFSET_HUGE  60
-#define INVISIBLE_VIEW_WIDTH 75
+#define OFFSET_MEDIUM 16
+#define OFFSET_LARGE 38
 
-@implementation TSIPItemCell
+#define IMAGE_HEIGHT_WIDTH 88
 
-- (void)bindViewModel:(id)viewModel {
+@implementation ItemCell
+
+-(void)bindWithManagedObject:(Item*)managedObject{
     
-    TSIPItemVM * vm = viewModel;
-    _titleLabel.text = vm.title;
-    _codeLabel.text = vm.code;
-    
-    if (vm.shouldColourManually)
-        [self colorAsSelected];
-    else
-        [self colorNonSelected];
+    _lblTitle.text = managedObject.itemTitle;
+    _lblText.text = managedObject.itemText;
+  //  [_imgView setImageWithURL:[NSURL URLWithString:managedObject.imageLink]];
     
 }
 
+
 -(void)initialize{
+    
     [self createUI];
     [self createConstraints];
 }
 
 -(void)createUI{
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    _lblTitle = [UILabel new];
+    _lblTitle.numberOfLines = 0;
+    [self.contentView addSubview:_lblTitle];
     
-    _invisibleView = [UIView new];
-    [self addSubview:_invisibleView];
+    _lblText = [UILabel new];
+    _lblText.numberOfLines = 0;
+    [self.contentView addSubview:_lblText];
     
-    _titleLabel = [UILabel new];
-    _titleLabel.textColor = [UIColor blackColor];
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.font = FONT_ALT_SIZE(16.5);
+    _imgView = [[UIImageView alloc]init];
+    [self.contentView addSubview:_imgView];
     
-    [self addSubview:_titleLabel];
-    
-    _codeLabel = [UILabel new];
-    _codeLabel.textColor = [UIColor colorWithHexString:@"#a4a6a7"];
-    _codeLabel.textAlignment = NSTextAlignmentCenter;
-    _codeLabel.font =  FONT_ALT_COMP_SIZE(16.5);
-    [_invisibleView addSubview:_codeLabel];
     
 }
 
 -(void)createConstraints{
     
-    [_invisibleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.top.bottom.equalTo(self);
-        make.width.equalTo(@(INVISIBLE_VIEW_WIDTH));
-        
-    }];
-    
-    [_codeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.centerX.equalTo(_invisibleView.mas_centerX);
-        make.centerY.equalTo(self);
-        
+    [_lblTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
+        make.top.equalTo(self.contentView.mas_top).offset(OFFSET_SMALL);
         
     }];
     
-    [_titleLabel  mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_lblText mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(_codeLabel.mas_right).with.offset(OFFSET_HUGE);
-        make.centerY.equalTo(self);
+        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
+        make.bottom.equalTo(self.contentView.mas_top).offset(-OFFSET_SMALL);
+    }];
+    
+    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(self.contentView.mas_left).offset(8);
+        make.height.with.equalTo(@(IMAGE_HEIGHT_WIDTH));
+        make.centerY.equalTo(self.contentView.mas_centerY);
         
     }];
-}
-
--(void)colorAsSelected{
     
-    _titleLabel.textColor = [UIColor colorWithHexString:@"#155aa1"];
-    _codeLabel.textColor = [UIColor colorWithHexString:@"#155aa1"];
 }
-
--(void)colorNonSelected{
-    
-    _titleLabel.textColor = [UIColor blackColor];
-    _codeLabel.textColor = [UIColor colorWithHexString:@"#b4b5b7"];
-}
-
-
-
-
-
-
 
 @end

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseCell.h"
+#import "CoreDataBinding.h"
 
-@interface ItemCell : BaseCell
+@interface ItemCell : BaseCell <CoreDataBinding>
+
+-(void)bindWithManagedObject:(id)managedObject;
 
 @end

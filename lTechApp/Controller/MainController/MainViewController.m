@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "MainControllerViewModel.h"
 #import "ItemCell.h"
+#import "Item.h"
+#import "CoreDataBinding.h"
 
 @interface MainViewController ()
 
@@ -21,6 +23,7 @@
 @implementation MainViewController
 
 #define BATCH_SIZE 20
+#define DEFAULT_CELL_HEIGHT 66
 #define CELL_IDENTIFIER @"ItemCell"
 
 -(void)viewDidLoad{
@@ -45,7 +48,6 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.scrollEnabled = NO;
-    [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 85.0;
@@ -55,17 +57,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ItemCell *iCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
+    ItemCell<CoreDataBinding> *iCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
     
     if(!iCell){
-        iCell = [self.tableView dequeueReusableCellWithIdentifier:@"RefSelectorCell"];
+        iCell = [self.tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     }
     
     /* bind cell */
-//    NSDictionary *dct = self.arrValues[indexPath.section];
-//    offCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    offCell.header.text = dct[@"title"];
-//    offCell.subtitle.text = dct[@"subtitle"];
+    [iCell bindWithManagedObject:[_frc objectAtIndexPath:indexPath]];
+    
     [iCell setNeedsUpdateConstraints];
     [iCell updateConstraintsIfNeeded];
     
@@ -82,23 +82,59 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return DEFAULT_CELL_HEIGHT;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    id  sectionInfo =
+    [[_frc sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    
+    if (!cell) {
+        cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
+    }
+    
+    // Configure the cell...
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)configureCell:(UITableViewCell<CoreDataBinding>*)cell atIndexPath:(NSIndexPath *)indexPath {
+    Item *item = [_frc objectAtIndexPath:indexPath];
+    [cell bindWithManagedObject:item];
+}
 
 
 #pragma mark - fetced results controller
 
-- (NSFetchedResultsController *)fetchedResultsController {
+- (NSFetchedResultsController *)frc {
     
+    NSLog(@"ever come here");
     if (_frc != nil) {
         return _frc;
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Item" inManagedObjectContext:self.getManagedObjectContext];
+                                   entityForName:CD_ENTITY_NAME  inManagedObjectContext:self.getManagedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:[NSString stringWithFormat:@"%@.%@", CD_ENTITY_NAME, CD_ID] ascending:NO];
+                              initWithKey:[NSString stringWithFormat:@"%@", CD_SORT] ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:BATCH_SIZE];
@@ -122,6 +158,7 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
+    
     UITableView *tableView = self.tableView;
     
     switch(type) {
@@ -135,7 +172,8 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self.tableAdapter bindCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withObject:self.viewModel.arrValues[indexPath.row]];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+
             break;
             
         case NSFetchedResultsChangeMove:

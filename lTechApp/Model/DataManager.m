@@ -110,7 +110,6 @@
                     /* Обновляем параметры */
                     if (results.count > 0){
                         
-                        NSLog(@"entered here");
                     [self updateObject:results[0] withItem:newItem];
                     }
     
@@ -121,7 +120,7 @@
         }];
         
         /* Объекта с таким ID не найдено. Добавляем новый объект. Проверяем не был ли он уже добавлен. */
-        NSLog(@"check book %i", isHaveNewObject);
+        NSLog(@"check new object %i", isHaveNewObject);
         if (isHaveNewObject)
             [self addRecordWithItem:newItems[idx]];
         
