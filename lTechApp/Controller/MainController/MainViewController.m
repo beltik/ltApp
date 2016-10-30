@@ -24,6 +24,13 @@
 #define DEFAULT_CELL_HEIGHT 66
 #define CELL_IDENTIFIER @"ItemCell"
 
++(instancetype)initWithSortOrder:(NSInteger)srtOrder{
+    
+    MainViewController  *vc = [MainViewController new];
+    vc.sortOrder = srtOrder;
+    return vc;
+}
+
 -(void)viewDidLoad{
     
     [super viewDidLoad];
@@ -191,15 +198,6 @@
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
 }
-
-
-
-
-
-
-
-
-
 
 - (NSManagedObjectContext *)getManagedObjectContext
 {

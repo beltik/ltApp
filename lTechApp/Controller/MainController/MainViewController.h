@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, sortCase) {
+    tableSortServer,
+    tableSortDate
+};
+
 @interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic) sortCase sortOrder;
+
++(instancetype)initWithSortOrder:(NSInteger)srtOrder;
 
 @end
