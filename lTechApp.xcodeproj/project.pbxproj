@@ -10,6 +10,8 @@
 		7165713B1DC4B11100C3CB94 /* CDTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165713A1DC4B11100C3CB94 /* CDTableAdapter.m */; };
 		716571461DC4C58800C3CB94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571451DC4C58800C3CB94 /* MainViewController.m */; };
 		716571491DC4C96E00C3CB94 /* MainControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571481DC4C96E00C3CB94 /* MainControllerViewModel.m */; };
+		7165714D1DC4CD6400C3CB94 /* ItemCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165714C1DC4CD6400C3CB94 /* ItemCellVM.m */; };
+		716571501DC4D02400C3CB94 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165714F1DC4D02400C3CB94 /* ItemCell.m */; };
 		718165391DC0EDC100C5253E /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 718165381DC0EDC100C5253E /* DataManager.m */; };
 		7181653B1DC0F1E000C5253E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7181653A1DC0F1E000C5253E /* CoreData.framework */; };
 		7181653F1DC115AF00C5253E /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7181653E1DC115AF00C5253E /* ItemModel.m */; };
@@ -39,6 +41,10 @@
 		716571451DC4C58800C3CB94 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		716571471DC4C96E00C3CB94 /* MainControllerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainControllerViewModel.h; sourceTree = "<group>"; };
 		716571481DC4C96E00C3CB94 /* MainControllerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainControllerViewModel.m; sourceTree = "<group>"; };
+		7165714B1DC4CD6400C3CB94 /* ItemCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCellVM.h; sourceTree = "<group>"; };
+		7165714C1DC4CD6400C3CB94 /* ItemCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCellVM.m; sourceTree = "<group>"; };
+		7165714E1DC4D02400C3CB94 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		7165714F1DC4D02400C3CB94 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		718165371DC0EDC100C5253E /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		718165381DC0EDC100C5253E /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		7181653A1DC0F1E000C5253E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -114,6 +120,8 @@
 		716571411DC4C4B000C3CB94 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7165714E1DC4D02400C3CB94 /* ItemCell.h */,
+				7165714F1DC4D02400C3CB94 /* ItemCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -121,6 +129,7 @@
 		716571421DC4C4E900C3CB94 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
+				7165714A1DC4CCFB00C3CB94 /* Items */,
 				716571441DC4C58800C3CB94 /* MainViewController.h */,
 				716571451DC4C58800C3CB94 /* MainViewController.m */,
 				716571471DC4C96E00C3CB94 /* MainControllerViewModel.h */,
@@ -134,6 +143,30 @@
 			children = (
 			);
 			path = DetailController;
+			sourceTree = "<group>";
+		};
+		7165714A1DC4CCFB00C3CB94 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				7165714B1DC4CD6400C3CB94 /* ItemCellVM.h */,
+				7165714C1DC4CD6400C3CB94 /* ItemCellVM.m */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		716571511DC4D07700C3CB94 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				716571521DC4D08200C3CB94 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		716571521DC4D08200C3CB94 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		71EE74BA1DC0BA3B00B03AC2 = {
@@ -185,6 +218,7 @@
 		71EE74E21DC0C9C700B03AC2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				716571511DC4D07700C3CB94 /* Views */,
 				7165713C1DC4B21500C3CB94 /* Protocols */,
 				716571381DC4B10800C3CB94 /* CDRGeneral */,
 				71EE74E81DC0CA6100B03AC2 /* Categories */,
@@ -385,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				716571501DC4D02400C3CB94 /* ItemCell.m in Sources */,
 				71EE74CB1DC0BA3C00B03AC2 /* AppDelegate.m in Sources */,
 				71EE74D41DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld in Sources */,
 				71EE74F11DC0CD6A00B03AC2 /* Endpoints.m in Sources */,
@@ -398,6 +433,7 @@
 				716571491DC4C96E00C3CB94 /* MainControllerViewModel.m in Sources */,
 				7165713B1DC4B11100C3CB94 /* CDTableAdapter.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,
+				7165714D1DC4CD6400C3CB94 /* ItemCellVM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

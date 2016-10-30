@@ -10,6 +10,7 @@
 
 #import "VMHeightProtocol.h"
 #import "CDCellSizerProtocol.h"
+#import "CEReactiveView.h"
 
 @protocol CDTableAdapterViewModel;
 @class RACCommand;
@@ -17,13 +18,18 @@
 @interface CDTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) id<CDTableAdapterViewModel> viewModel;
-
+@property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSDictionary *dctCellsMap;
 @property (nonatomic) CGFloat defaultCellHeight;
 @property (nonatomic) CGFloat defaultFooterHeight;
 @property (nonatomic, readonly) BOOL isDragging;
 
 + (void)mapTableView:(UITableView*)tableView cellsWithDictionary:(NSDictionary*)dct;
+
+// Core data addition
+
+- (void)bindCell:(UITableViewCell<CEReactiveView> *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)ob;
+
 
 @end
 

@@ -27,6 +27,7 @@
 #define CD_SORT @"itemSortOrder"
 #define CD_FULL_TEXT @"itemText"
 #define CD_TITLE @"itemTitle"
+#define CD_ENTITY_NAME @"Item"
 
 
 #endif

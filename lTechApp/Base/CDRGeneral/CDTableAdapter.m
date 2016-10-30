@@ -104,20 +104,22 @@
     return self.viewModel.arrValues.count;
 }
 
+- (void)bindCell:(UITableViewCell<CEReactiveView> *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)ob {
+    
+    ob = self.viewModel.arrValues[indexPath.row];
+    [cell bindViewModel:ob withFetchedResultsController:_fetchedResultsController];
+
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id ob;
     
     ob = self.viewModel.arrValues[indexPath.row];
     UITableViewCell<CEReactiveView> *cell = nil;
     
-#warning make more universality (loading cell from xib)
-    if ([NSStringFromClass([ob class]) isEqualToString:@"DocumentsItemViewModel"]) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"DocumentsViewCell" owner:self options:nil][0];
-    } else {
-        
-        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ob class]) forIndexPath:indexPath];
-    }
-    [cell bindViewModel:ob];
+    cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ob class]) forIndexPath:indexPath];
+    
+    [cell bindViewModel:ob withFetchedResultsController:_fetchedResultsController];
     return cell;
 }
 
@@ -137,5 +139,6 @@
     if(!scrollView.isDecelerating)
         self.isDragging = NO;
 }
+
 
 @end

@@ -7,7 +7,18 @@
 //
 
 #import <ReactiveViewModel/ReactiveViewModel.h>
+#import "CDTableAdapter.h"
+#import "CDBaseViewModel.h"
 
-@interface MainControllerViewModel : RVMViewModel
+@interface MainControllerViewModel : RVMViewModel <CDTableAdapterViewModel, CDSelectThingViewModelProtocol, CDBaseViewModel>
+
+@property (nonatomic, readonly) NSArray *arrValues;
+@property (nonatomic, readonly) NSIndexPath *selectedIndexPath;
+@property (nonatomic, readonly) RACCommand *cmdCellSelected;
+@property (nonatomic, readonly) id selectedThing;
+
+@property (nonatomic, readonly) NSString *title;
+
+- (instancetype)initWithModel:(id)model;
 
 @end
