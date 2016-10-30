@@ -44,6 +44,21 @@
     }
     
     [self createTableView];
+    [self createBarButton];
+}
+
+-(void)createBarButton{
+    
+    UIImage* image = [UIImage imageNamed:@"Refresh"];
+    CGRect frameimg = CGRectMake(0, 0, 22, 22);
+    UIButton *imgBtn = [[UIButton alloc] initWithFrame:frameimg];
+    [imgBtn setBackgroundImage:image forState:UIControlStateNormal];
+    [imgBtn addTarget:self action:@selector(refresh)
+         forControlEvents:UIControlEventTouchUpInside];
+    [imgBtn setShowsTouchWhenHighlighted:YES];
+    
+    self.bbiRefresh =[[UIBarButtonItem alloc] initWithCustomView:imgBtn];
+    self.navigationItem.rightBarButtonItem = self.bbiRefresh;
 }
 
 #pragma mark - table view

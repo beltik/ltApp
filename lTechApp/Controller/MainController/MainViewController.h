@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, sortCase) {
 
 @interface MainViewController : UIViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic) IBOutlet UIBarButtonItem *bbiRefresh;
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic) sortCase sortOrder;
