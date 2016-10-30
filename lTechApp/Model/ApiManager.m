@@ -11,25 +11,24 @@
 #import "DataManager.h"
 #import "ItemModel.h"
 
+#define CHANGE_INTERVAL 10;
 
 @implementation ApiManager
 
 -(RACSignal*)getItems{
-    
-    RACSignal *sign = [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
-    return sign;
+ return  [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
 }
 
--(void)getItemsWithEndpoints:(NSString*)endpoint{
-    
-    RACSignal *sign = [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
-    [[sign throttle:0.25] subscribeNext:^(id x) {
-        DataManager *dMgr = [[DataManager alloc]init];
-        [dMgr saveJSONDataToCD:x];
-    } ];
-
-
-}
+//-(void)getItemsWithEndpoints:(NSString*)endpoint{
+//    
+//    RACSignal *sign = [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
+//    [[sign throttle:0.25] subscribeNext:^(id x) {
+//        DataManager *dMgr = [[DataManager alloc]init];
+//        [dMgr saveJSONDataToCD:x];
+//    } ];
+//
+//
+//}
 
 
 

@@ -167,8 +167,12 @@
                             [[self managedObjectContext] deleteObject:managedObject];
                         }
                         //Save context to write to store
-                        [[self managedObjectContext] save:nil];
-                    }
+                        NSError *error = nil;
+                        if (![[self managedObjectContext] save:&error]) {
+                            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+                        }   else {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefresh object:nil];
+                        }                    }
                 }
                 
             }
@@ -195,6 +199,8 @@
     NSError *error = nil;
     if (![[self managedObjectContext] save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }   else {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefresh object:nil];
     }
 }
 
@@ -207,6 +213,8 @@
     NSError *error = nil;
     if (![[self managedObjectContext] save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }   else {
+      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefresh object:nil];
     }
     
 }

@@ -20,23 +20,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     ApiManager *mgr = [[ApiManager alloc]init];
-    
-    [[mgr.getItems throttle:0.25] subscribeNext:^(RACTuple * x) {
+
+    RACSignal *sign = [RACSignal interval:CHANGE_INTERVAL onScheduler:[RACScheduler mainThreadScheduler]];
+    [sign subscribeNext:^(id x) {
         
-        /* Handle error */
+        [mgr.getItems subscribeNext:^(RACTuple * x) {
+            
+            /* Handle error */
+            NSHTTPURLResponse *response = x.second;
+            NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+            if (statusCode != 200) {
+                NSLog(@"Failed with HTTP status code: %ld", (long)statusCode);
+                return;
+            }
+            
+            /* Save items to Core Data */
+            
+            DataManager *dMgr = [[DataManager alloc]init];
+            [dMgr saveJSONDataToCD:x.first];
+        }];
         
-        NSHTTPURLResponse *response = x.second;
-        NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
-        if (statusCode != 200) {
-            NSLog(@"Failed with HTTP status code: %ld", (long)statusCode);
-            return;
-        }
-        
-        /* Save items to Core Data */
-        
-        DataManager *dMgr = [[DataManager alloc]init];
-        [dMgr saveJSONDataToCD:x.first];
     }];
+
+    
     
     
     return YES;

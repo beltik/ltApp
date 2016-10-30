@@ -45,6 +45,11 @@
     
     [self createTableView];
     [self createBarButton];
+    
+//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kNotificationRefresh object:nil] subscribeNext:^(id x) {
+//        NSLog(@"should reload");
+//        [self.tableView reloadData];
+//    }];
 }
 
 -(void)createBarButton{
@@ -63,7 +68,7 @@
 
 -(void)refresh{
     
-
+    NSLog(@"pif paf");
 }
 
 #pragma mark - table view
@@ -197,8 +202,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-
+            [self.tableView reloadData];
             break;
             
         case NSFetchedResultsChangeMove:
