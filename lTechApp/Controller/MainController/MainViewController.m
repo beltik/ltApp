@@ -7,14 +7,12 @@
 //
 
 #import "MainViewController.h"
-#import "MainControllerViewModel.h"
 #import "ItemCell.h"
 #import "Item.h"
 #import "CoreDataBinding.h"
 
 @interface MainViewController ()
 
-@property (nonatomic) MainControllerViewModel *viewModel;
 @property (nonatomic) NSFetchedResultsController *frc;
 @property (nonatomic, getter=getManagedObjectContext) NSManagedObjectContext *managedObjectContext;
 

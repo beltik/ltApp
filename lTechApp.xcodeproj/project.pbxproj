@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		716571461DC4C58800C3CB94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571451DC4C58800C3CB94 /* MainViewController.m */; };
-		716571491DC4C96E00C3CB94 /* MainControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571481DC4C96E00C3CB94 /* MainControllerViewModel.m */; };
 		716571501DC4D02400C3CB94 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165714F1DC4D02400C3CB94 /* ItemCell.m */; };
 		716571561DC5F73F00C3CB94 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571551DC5F73F00C3CB94 /* BaseCell.m */; };
 		7165715B1DC63A3000C3CB94 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571581DC63A3000C3CB94 /* Item+CoreDataProperties.m */; };
@@ -32,12 +31,8 @@
 
 /* Begin PBXFileReference section */
 		3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lTechApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp.debug.xcconfig"; sourceTree = "<group>"; };
-		7165713D1DC4B25300C3CB94 /* CDBaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDBaseViewModel.h; sourceTree = "<group>"; };
-		716571401DC4B46D00C3CB94 /* CDCellSizerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDCellSizerProtocol.h; sourceTree = "<group>"; };
 		716571441DC4C58800C3CB94 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		716571451DC4C58800C3CB94 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		716571471DC4C96E00C3CB94 /* MainControllerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainControllerViewModel.h; sourceTree = "<group>"; };
-		716571481DC4C96E00C3CB94 /* MainControllerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainControllerViewModel.m; sourceTree = "<group>"; };
 		7165714E1DC4D02400C3CB94 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
 		7165714F1DC4D02400C3CB94 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		716571541DC5F73F00C3CB94 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
@@ -102,8 +97,6 @@
 		7165713C1DC4B21500C3CB94 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				716571401DC4B46D00C3CB94 /* CDCellSizerProtocol.h */,
-				7165713D1DC4B25300C3CB94 /* CDBaseViewModel.h */,
 				7165715E1DC63B8E00C3CB94 /* CoreDataBinding.h */,
 			);
 			path = Protocols;
@@ -124,8 +117,6 @@
 			children = (
 				716571441DC4C58800C3CB94 /* MainViewController.h */,
 				716571451DC4C58800C3CB94 /* MainViewController.m */,
-				716571471DC4C96E00C3CB94 /* MainControllerViewModel.h */,
-				716571481DC4C96E00C3CB94 /* MainControllerViewModel.m */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -435,7 +426,6 @@
 				71EE74F71DC0CF5800B03AC2 /* UIColor+Custom.m in Sources */,
 				718165391DC0EDC100C5253E /* DataManager.m in Sources */,
 				7165715C1DC63A3000C3CB94 /* Item.m in Sources */,
-				716571491DC4C96E00C3CB94 /* MainControllerViewModel.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,
 				7165715B1DC63A3000C3CB94 /* Item+CoreDataProperties.m in Sources */,
 			);
