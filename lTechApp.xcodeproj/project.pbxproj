@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71628C7C1DC6705000C86225 /* NSString+WithoutScreening.m in Sources */ = {isa = PBXBuildFile; fileRef = 71628C7B1DC6705000C86225 /* NSString+WithoutScreening.m */; };
 		716571461DC4C58800C3CB94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571451DC4C58800C3CB94 /* MainViewController.m */; };
 		716571501DC4D02400C3CB94 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165714F1DC4D02400C3CB94 /* ItemCell.m */; };
 		716571561DC5F73F00C3CB94 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571551DC5F73F00C3CB94 /* BaseCell.m */; };
@@ -31,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		3A6667BC133F9A9F879D61AC /* Pods-lTechApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lTechApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lTechApp/Pods-lTechApp.debug.xcconfig"; sourceTree = "<group>"; };
+		71628C7A1DC6705000C86225 /* NSString+WithoutScreening.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WithoutScreening.h"; sourceTree = "<group>"; };
+		71628C7B1DC6705000C86225 /* NSString+WithoutScreening.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WithoutScreening.m"; sourceTree = "<group>"; };
 		716571441DC4C58800C3CB94 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		716571451DC4C58800C3CB94 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		7165714E1DC4D02400C3CB94 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 				71EE74F61DC0CF5800B03AC2 /* UIColor+Custom.m */,
 				71EE74F81DC0CF6700B03AC2 /* UIFont+Custom.h */,
 				71EE74F91DC0CF6700B03AC2 /* UIFont+Custom.m */,
+				71628C7A1DC6705000C86225 /* NSString+WithoutScreening.h */,
+				71628C7B1DC6705000C86225 /* NSString+WithoutScreening.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				7181653F1DC115AF00C5253E /* ItemModel.m in Sources */,
 				716571461DC4C58800C3CB94 /* MainViewController.m in Sources */,
 				71EE74F71DC0CF5800B03AC2 /* UIColor+Custom.m in Sources */,
+				71628C7C1DC6705000C86225 /* NSString+WithoutScreening.m in Sources */,
 				718165391DC0EDC100C5253E /* DataManager.m in Sources */,
 				7165715C1DC63A3000C3CB94 /* Item.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,

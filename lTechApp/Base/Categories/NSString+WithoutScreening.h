@@ -10,4 +10,6 @@
 
 @interface NSString (WithoutScreening)
 
+-(NSString *) stringByStrippingScreeningSymbols;
+
 @end

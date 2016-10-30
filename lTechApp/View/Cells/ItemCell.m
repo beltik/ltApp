@@ -9,12 +9,15 @@
 #import "ItemCell.h"
 #import "Item.h"
 #import "UIImageView+AFNetworking.h"
+#import "NSString+WithoutScreening.h"
+
 
 @interface ItemCell ()
 
 @property (nonatomic) UILabel *lblTitle;
 @property (nonatomic) UILabel *lblText;
 @property (nonatomic) UIImageView *imgView;
+@property (nonatomic) UIView *containerView;
 
 @end
 
@@ -30,7 +33,7 @@
     
     _lblTitle.text = managedObject.itemTitle;
     _lblText.text = managedObject.itemText;
-  //  [_imgView setImageWithURL:[NSURL URLWithString:managedObject.imageLink]];
+    [_imgView setImageWithURL:[NSURL URLWithString:[managedObject.imageLink stringByStrippingScreeningSymbols]]];
     
 }
 
@@ -43,60 +46,61 @@
 
 -(void)createUI{
     
+    _containerView = [UIView new];
+    _containerView.layer.borderColor = [UIColor blackColor].CGColor;
+    _containerView.layer.borderWidth = 3.0f;
+    _containerView.layer.cornerRadius = 25;
+    _containerView.layer.masksToBounds = YES;
+    [self.contentView addSubview:_containerView];
+    
     _lblTitle = [UILabel new];
     _lblTitle.numberOfLines = 0;
-    [self.contentView addSubview:_lblTitle];
+    [self.containerView addSubview:_lblTitle];
     
     _lblText = [UILabel new];
     _lblText.numberOfLines = 0;
-    [self.contentView addSubview:_lblText];
+    [self.containerView addSubview:_lblText];
     
     _imgView = [[UIImageView alloc]init];
-    [self.contentView addSubview:_imgView];
-    
+    _imgView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.containerView addSubview:_imgView];
     
 }
 
 -(void)createConstraints{
     
-//    [_lblTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
-//        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
-//        make.top.equalTo(self.contentView.mas_top).offset(OFFSET_SMALL);
-//        
-//    }];
-//    
-//    [_lblText mas_makeConstraints:^(MASConstraintMaker *make) {
-//        
-//        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
-//        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
-//        make.bottom.equalTo(self.contentView.mas_top).offset(-OFFSET_SMALL);
-//    }];
-//    
-//    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.equalTo(self.contentView.mas_left).offset(8);
-//        make.height.with.equalTo(@(IMAGE_HEIGHT_WIDTH));
-//        make.centerY.equalTo(self.contentView.mas_centerY);
-//        
-//    }];
+    [_containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.top.equalTo(self.contentView).with.offset(OFFSET_MEDIUM);
+        make.right.bottom.equalTo(self.contentView).with.offset(-OFFSET_MEDIUM);
+
+    }];
     
     [_lblTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.contentView.mas_left).with.offset(OFFSET_MEDIUM);
-        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
-        make.top.equalTo(self.contentView.mas_top).offset(OFFSET_SMALL);
+        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        make.right.equalTo(self.containerView.mas_right).offset(-OFFSET_MEDIUM);
+        make.top.equalTo(self.containerView.mas_top).offset(OFFSET_MEDIUM);
         make.bottom.equalTo(_lblText.mas_top).with.offset(-OFFSET_MEDIUM);
     }];
     
     [_lblText mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(_lblTitle.mas_bottom).with.offset(OFFSET_MEDIUM);
-        make.left.equalTo(self.contentView.mas_left).with.offset(OFFSET_MEDIUM);
-        make.right.equalTo(self.contentView.mas_right).offset(-OFFSET_SMALL);
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(-OFFSET_SMALL);
+        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        make.right.equalTo(self.containerView.mas_right).offset(-OFFSET_MEDIUM);
+        make.bottom.equalTo(self.containerView.mas_bottom).offset(-OFFSET_MEDIUM);
     }];
+    
+    [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.containerView.mas_left).offset(OFFSET_MEDIUM);
+        make.height.width.equalTo(@(IMAGE_HEIGHT_WIDTH));
+        make.centerY.equalTo(self.containerView.mas_centerY);
+        
+    }];
+
+
 }
 
 -(void)layoutSubviews{
