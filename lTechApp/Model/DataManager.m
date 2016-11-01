@@ -137,7 +137,6 @@
         }];
         
         /* Объекта с таким ID не найдено. Добавляем новый объект. Проверяем не был ли он уже добавлен. */
-        NSLog(@"check new object %i", isHaveNewObject);
         if (isHaveNewObject)
             [self addRecordWithItem:newItems[idx]];
         
