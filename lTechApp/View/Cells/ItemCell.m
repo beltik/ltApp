@@ -55,10 +55,14 @@
     
     _lblTitle = [UILabel new];
     _lblTitle.numberOfLines = 0;
+    _lblTitle.textColor = [UIColor defaultTextColour];
+    _lblTitle.font = [UIFont largeTextFont];
     [self.containerView addSubview:_lblTitle];
     
     _lblText = [UILabel new];
     _lblText.numberOfLines = 0;
+    _lblText.textColor = [UIColor defaultTextColour];
+    _lblText.font = [UIFont defaultTextFont];
     [self.containerView addSubview:_lblText];
     
     _imgView = [[UIImageView alloc]init];

@@ -12,7 +12,7 @@
 
 +(UIColor*)defaultTextColour{
     
-    return [UIColor colorWithHexString:@"#808080"];
+    return [UIColor colorWithHexString:@"#333333"];
 }
 
 @end

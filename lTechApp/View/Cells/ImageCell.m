@@ -19,6 +19,9 @@
 
 @end
 
+#define OFFSET 20
+#define MAX_HEIGHT 300
+
 @implementation ImageCell
 
 -(void)bindWithObject:(ImageItem*)obj{
@@ -43,7 +46,9 @@
 -(void)createConstraints{
     
     [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView);
+        make.left.top.equalTo(self.contentView).offset(OFFSET);
+        make.right.bottom.equalTo(self.contentView).offset(-OFFSET);
+        make.height.lessThanOrEqualTo(@(MAX_HEIGHT));
     }];
     
     
