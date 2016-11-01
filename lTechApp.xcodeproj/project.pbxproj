@@ -16,6 +16,9 @@
 		718165391DC0EDC100C5253E /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 718165381DC0EDC100C5253E /* DataManager.m */; };
 		7181653B1DC0F1E000C5253E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7181653A1DC0F1E000C5253E /* CoreData.framework */; };
 		7181653F1DC115AF00C5253E /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7181653E1DC115AF00C5253E /* ItemModel.m */; };
+		71C857331DC8CDFE000E2A4A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C857321DC8CDFE000E2A4A /* DetailViewController.m */; };
+		71C857361DC8CE70000E2A4A /* DetailViewControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C857351DC8CE70000E2A4A /* DetailViewControllerViewModel.m */; };
+		71C8573B1DC8D55C000E2A4A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C8573A1DC8D55C000E2A4A /* UIColor+HexString.m */; };
 		71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74C71DC0BA3C00B03AC2 /* main.m */; };
 		71EE74CB1DC0BA3C00B03AC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */; };
 		71EE74D11DC0BA3C00B03AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EE74CF1DC0BA3C00B03AC2 /* Main.storyboard */; };
@@ -50,6 +53,14 @@
 		7181653A1DC0F1E000C5253E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7181653D1DC115AF00C5253E /* ItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemModel.h; sourceTree = "<group>"; };
 		7181653E1DC115AF00C5253E /* ItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemModel.m; sourceTree = "<group>"; };
+		71C857311DC8CDFE000E2A4A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		71C857321DC8CDFE000E2A4A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		71C857341DC8CE70000E2A4A /* DetailViewControllerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerViewModel.h; sourceTree = "<group>"; };
+		71C857351DC8CE70000E2A4A /* DetailViewControllerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerViewModel.m; sourceTree = "<group>"; };
+		71C857371DC8CF3C000E2A4A /* ModelBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBinding.h; sourceTree = "<group>"; };
+		71C857381DC8D42F000E2A4A /* BaseViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewControllerProtocol.h; sourceTree = "<group>"; };
+		71C857391DC8D55C000E2A4A /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		71C8573A1DC8D55C000E2A4A /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		71EE74C31DC0BA3B00B03AC2 /* lTechApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lTechApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EE74C71DC0BA3C00B03AC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				7165715E1DC63B8E00C3CB94 /* CoreDataBinding.h */,
+				71C857371DC8CF3C000E2A4A /* ModelBinding.h */,
+				71C857381DC8D42F000E2A4A /* BaseViewControllerProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -127,6 +140,10 @@
 		716571431DC4C4EE00C3CB94 /* DetailController */ = {
 			isa = PBXGroup;
 			children = (
+				71C857311DC8CDFE000E2A4A /* DetailViewController.h */,
+				71C857321DC8CDFE000E2A4A /* DetailViewController.m */,
+				71C857341DC8CE70000E2A4A /* DetailViewControllerViewModel.h */,
+				71C857351DC8CE70000E2A4A /* DetailViewControllerViewModel.m */,
 			);
 			path = DetailController;
 			sourceTree = "<group>";
@@ -226,6 +243,8 @@
 		71EE74E81DC0CA6100B03AC2 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				71C857391DC8D55C000E2A4A /* UIColor+HexString.h */,
+				71C8573A1DC8D55C000E2A4A /* UIColor+HexString.m */,
 				71EE74F51DC0CF5800B03AC2 /* UIColor+Custom.h */,
 				71EE74F61DC0CF5800B03AC2 /* UIColor+Custom.m */,
 				71EE74F81DC0CF6700B03AC2 /* UIFont+Custom.h */,
@@ -418,8 +437,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71C857361DC8CE70000E2A4A /* DetailViewControllerViewModel.m in Sources */,
 				716571501DC4D02400C3CB94 /* ItemCell.m in Sources */,
 				71EE74CB1DC0BA3C00B03AC2 /* AppDelegate.m in Sources */,
+				71C857331DC8CDFE000E2A4A /* DetailViewController.m in Sources */,
 				716571561DC5F73F00C3CB94 /* BaseCell.m in Sources */,
 				71EE74D41DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld in Sources */,
 				71EE74F11DC0CD6A00B03AC2 /* Endpoints.m in Sources */,
@@ -432,6 +453,7 @@
 				71628C7C1DC6705000C86225 /* NSString+WithoutScreening.m in Sources */,
 				718165391DC0EDC100C5253E /* DataManager.m in Sources */,
 				7165715C1DC63A3000C3CB94 /* Item.m in Sources */,
+				71C8573B1DC8D55C000E2A4A /* UIColor+HexString.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,
 				7165715B1DC63A3000C3CB94 /* Item+CoreDataProperties.m in Sources */,
 			);

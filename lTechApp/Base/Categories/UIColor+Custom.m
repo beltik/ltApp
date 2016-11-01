@@ -10,4 +10,9 @@
 
 @implementation UIColor (Custom)
 
++(UIColor*)defaultTextColour{
+    
+    return [UIColor colorWithHexString:@"#808080"];
+}
+
 @end

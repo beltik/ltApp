@@ -12,6 +12,8 @@
 #import "CoreDataBinding.h"
 #import "DataManager.h"
 #import "ApiManager.h"
+#import "DetailViewController.h"
+#import "DetailViewControllerViewModel.h"
 
 @interface MainViewController ()
 
@@ -25,13 +27,6 @@
 #define BATCH_SIZE 20
 #define DEFAULT_CELL_HEIGHT 66
 #define CELL_IDENTIFIER @"ItemCell"
-
-+(instancetype)initWithSortOrder:(NSInteger)srtOrder{
-    
-    MainViewController  *vc = [MainViewController new];
-    vc.sortOrder = srtOrder;
-    return vc;
-}
 
 -(void)viewDidLoad{
     
@@ -104,6 +99,14 @@
 }
 
 #pragma mark - table view
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DetailViewControllerViewModel *dvm = [[DetailViewControllerViewModel alloc]init];
+    [dvm bindWithManagedObject:[_frc objectAtIndexPath:indexPath]];
+    DetailViewController *vc = [[DetailViewController alloc]initWithModel:dvm];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

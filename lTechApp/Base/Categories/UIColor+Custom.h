@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIColor+HexString.h"
 
 @interface UIColor (Custom)
+
++(UIColor*)defaultTextColour;
 
 @end

@@ -10,4 +10,8 @@
 
 @interface UIFont (Custom)
 
++(UIFont*)defaultTextFont;
++(UIFont*)largeTextFont;
+
+
 @end

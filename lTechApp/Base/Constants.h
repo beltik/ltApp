@@ -17,7 +17,9 @@
 
 #endif
 
-#define NAVBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
+#define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
+#define SCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 
 /* Core data entity properties */
 

@@ -20,6 +20,5 @@ typedef NS_ENUM(NSUInteger, sortCase) {
 @property (nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic) sortCase sortOrder;
 
-+(instancetype)initWithSortOrder:(NSInteger)srtOrder;
 
 @end
