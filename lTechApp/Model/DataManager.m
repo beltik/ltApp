@@ -186,7 +186,7 @@
 -(void)addRecordWithItem:(ItemModel*)mdl{
     
     NSManagedObject *item = [NSEntityDescription insertNewObjectForEntityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]];
-    [item setValue:mdl.itemImageLink.length > 0 ? mdl.itemImageLink : @"no_image" forKey:CD_IMAGE];
+    [item setValue:mdl.itemImageLink.length > 0 ? mdl.itemImageLink : NO_IMAGE forKey:CD_IMAGE];
     [item setValue:mdl.itemDate forKey:CD_DATE];
     [item setValue:mdl.itemId forKey:CD_ID];
     [item setValue:mdl.itemSort forKey:CD_SORT];
@@ -203,7 +203,7 @@
 
 -(void)updateObject:(NSManagedObject*)managedObject withItem:(ItemModel*)item{
     
-    [managedObject setValue:item.itemImageLink.length > 0 ? item.itemImageLink : @"no_image" forKey:CD_IMAGE];
+    [managedObject setValue:item.itemImageLink.length > 0 ? item.itemImageLink : NO_IMAGE forKey:CD_IMAGE];
     [managedObject setValue:item.itemText.length > 0 ? item.itemText : @"no_text" forKey:CD_FULL_TEXT];
     [managedObject setValue:item.itemTitle.length > 0 ? item.itemTitle : @"no_title" forKey:CD_TITLE];
     

@@ -105,7 +105,7 @@
 
 -(void)prepareForReuse{
     
-    self.imageView.image = nil;
+    self.imgView.image = nil;
 }
 
 -(void)layoutSubviews{

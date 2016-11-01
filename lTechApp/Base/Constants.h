@@ -28,6 +28,7 @@
 #define CD_FULL_TEXT @"itemText"
 #define CD_TITLE @"itemTitle"
 #define CD_ENTITY_NAME @"Item"
+#define NO_IMAGE @"http://ayudahost.com/wp-content/themes/ayudahost/images/default-thumbnail.jpg"
 #define CHANGE_INTERVAL 5
 
 
