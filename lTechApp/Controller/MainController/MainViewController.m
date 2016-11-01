@@ -47,6 +47,22 @@
     
 }
 
+
+- (IBAction)sortOrderChanged:(id)sender {
+    
+    UISegmentedControl *sc = sender;
+    if (sc.selectedSegmentIndex == 0){
+        self.sortOrder = tableSortServer;
+        [self updateFetchedResultsController];
+        [self.tableView reloadData];
+    }    else {
+        self.sortOrder = tableSortDate;
+        [self updateFetchedResultsController];
+        [self.tableView reloadData];
+    }
+    
+}
+
 -(void)createBarButton{
     
     UIImage* image = [UIImage imageNamed:@"Refresh"];
@@ -135,6 +151,51 @@
 
 
 #pragma mark - fetced results controller
+
+-(void)updateFetchedResultsController{
+    
+    [NSFetchedResultsController deleteCacheWithName:@"Root"];
+    NSString *sortCase;
+    switch (self.sortOrder) {
+        case tableSortServer:
+            sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
+            break;
+            
+        case tableSortDate:
+            sortCase = [NSString stringWithFormat:@"%@", CD_DATE];
+            break;
+            
+        default:
+            sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
+            break;
+    }
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:CD_ENTITY_NAME  inManagedObjectContext:self.getManagedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:sortCase ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetchRequest setFetchBatchSize:BATCH_SIZE];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.getManagedObjectContext sectionNameKeyPath:nil
+                                                   cacheName:@"Root"];
+    self.frc = theFetchedResultsController;
+    _frc.delegate = self;
+    NSError *error;
+    if (![[self frc] performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        exit(-1);  // Fail
+    }
+    
+}
+
 
 - (NSFetchedResultsController *)frc {
     

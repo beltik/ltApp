@@ -11,8 +11,6 @@
 #import "DataManager.h"
 #import "ItemModel.h"
 
-#define CHANGE_INTERVAL 10;
-
 @implementation ApiManager
 
 -(RACSignal*)getItems{
