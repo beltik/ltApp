@@ -76,8 +76,8 @@
 		71C8574A1DC90544000E2A4A /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		71EE74C31DC0BA3B00B03AC2 /* lTechApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lTechApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EE74C71DC0BA3C00B03AC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
+		71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		71EE74D01DC0BA3C00B03AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71EE74D31DC0BA3C00B03AC2 /* lTechApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = lTechApp.xcdatamodel; sourceTree = "<group>"; };
 		71EE74D51DC0BA3C00B03AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,8 +240,6 @@
 				71EE74EA1DC0CA8D00B03AC2 /* Model */,
 				71EE74EB1DC0CA8D00B03AC2 /* Views */,
 				71EE74E21DC0C9C700B03AC2 /* Base */,
-				71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */,
-				71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */,
 				71EE74E11DC0C78000B03AC2 /* prefix.pch */,
 				71EE74DA1DC0BA3C00B03AC2 /* Info.plist */,
 				71EE74D21DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld */,
@@ -320,6 +318,8 @@
 		71EE74EC1DC0CAAF00B03AC2 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */,
+				71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";

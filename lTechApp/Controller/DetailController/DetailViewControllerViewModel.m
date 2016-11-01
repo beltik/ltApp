@@ -9,6 +9,14 @@
 #import "DetailViewControllerViewModel.h"
 #import "Item.h"
 
+@interface DetailViewControllerViewModel ()
+
+@property (nonatomic, readwrite) NSString *itemTitle;
+@property (nonatomic, readwrite) NSString *itemText;
+@property (nonatomic, readwrite) NSString *itemImageLink;
+
+@end
+
 @implementation DetailViewControllerViewModel
 
 -(void)bindWithManagedObject:(Item*)managedObject{

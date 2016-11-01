@@ -193,6 +193,7 @@
 }
 
 
+
 - (NSFetchedResultsController *)frc {
     
     if (_frc != nil) {
@@ -259,7 +260,6 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-           // [self.tableView reloadData];
             [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
@@ -271,9 +271,6 @@
             break;
     }
 }
-
-
-
 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

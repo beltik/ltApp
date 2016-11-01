@@ -13,8 +13,8 @@
 
 -(void)bindWithManagedObject:(id)managedObject;
 
-@property (nonatomic) NSString *itemTitle;
-@property (nonatomic) NSString *itemText;
-@property (nonatomic) NSString *itemImageLink;
+@property (nonatomic, readonly) NSString *itemTitle;
+@property (nonatomic, readonly) NSString *itemText;
+@property (nonatomic, readonly) NSString *itemImageLink;
 
 @end

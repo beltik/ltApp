@@ -124,13 +124,6 @@ static NSDateFormatter *df;
         return NO;
 }
 
-//@property (nonatomic, strong) NSDate *itemDate;
-//@property (nonatomic, strong) NSNumber *itemId;
-//@property (nonatomic, strong) NSString *itemImageLink;
-//@property (nonatomic, strong) NSNumber *itemSort;
-//@property (nonatomic, strong) NSString *itemTitle;
-//@property (nonatomic, strong) NSString *itemText;
-
 -(void)updateProperties:(ItemModel*)newObject{
     
     self.itemDate = newObject.itemDate;

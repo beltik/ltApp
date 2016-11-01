@@ -16,6 +16,7 @@
 
 @property (nonatomic) UILabel *lblTitle;
 @property (nonatomic) UILabel *lblText;
+@property (nonatomic) UILabel *lblDate;
 @property (nonatomic) UIImageView *imgView;
 @property (nonatomic) UIView *containerView;
 
@@ -33,6 +34,7 @@
     
     _lblTitle.text = managedObject.itemTitle;
     _lblText.text = managedObject.itemText;
+    _lblDate.text = [self dateStringWithDate:managedObject.itemDate];
     [_imgView setImageWithURL:[NSURL URLWithString:[managedObject.imageLink stringByStrippingScreeningSymbols]]];
     
 }
@@ -65,6 +67,12 @@
     _lblText.font = [UIFont defaultTextFont];
     [self.containerView addSubview:_lblText];
     
+    _lblDate = [UILabel new];
+    _lblDate.numberOfLines = 0;
+    _lblDate.textColor = [UIColor defaultTextColour];
+    _lblDate.font = [UIFont largeTextFont];
+    [self.containerView addSubview:_lblDate];
+    
     _imgView = [[UIImageView alloc]init];
     _imgView.contentMode = UIViewContentModeScaleAspectFit;
     [self.containerView addSubview:_imgView];
@@ -91,6 +99,13 @@
     [_lblText mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(_lblTitle.mas_bottom).with.offset(OFFSET_MEDIUM);
+        make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
+        make.right.equalTo(self.containerView.mas_right).offset(-OFFSET_MEDIUM);
+    }];
+    
+    [_lblDate mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(_lblText.mas_bottom).with.offset(OFFSET_MEDIUM);
         make.left.equalTo(_imgView.mas_right).with.offset(OFFSET_MEDIUM);
         make.right.equalTo(self.containerView.mas_right).offset(-OFFSET_MEDIUM);
         make.bottom.equalTo(self.containerView.mas_bottom).offset(-OFFSET_MEDIUM);
@@ -124,17 +139,12 @@
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+-(NSString*)dateStringWithDate:(NSDate *)date{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy, HH:mm"];
+    return [dateFormatter stringFromDate:date];
+    
+}
 
 @end
