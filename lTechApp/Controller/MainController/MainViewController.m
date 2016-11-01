@@ -43,7 +43,6 @@
         exit(-1);  // Fail
     }
     
-    [self createTableView];
     [self createBarButton];
     
 //    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kNotificationRefresh object:nil] subscribeNext:^(id x) {
@@ -73,17 +72,6 @@
 
 #pragma mark - table view
 
--(void)createTableView{
-
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.tableView.scrollEnabled = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.estimatedRowHeight = 85.0;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -202,7 +190,8 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadData];
+           // [self.tableView reloadData];
+            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
