@@ -10,6 +10,8 @@
 #import "ItemCell.h"
 #import "Item.h"
 #import "CoreDataBinding.h"
+#import "DataManager.h"
+#import "ApiManager.h"
 
 @interface MainViewController ()
 
@@ -79,7 +81,26 @@
 
 -(void)refresh{
     
-    NSLog(@"pif paf");
+    ApiManager *mgr = [ApiManager sharedInstance];
+    
+        [[mgr.getItems throttle:0.5] subscribeNext:^(RACTuple * x) {
+            
+            /* Handle error */
+            NSHTTPURLResponse *response = x.second;
+            NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+            if (statusCode != 200) {
+                NSLog(@"Failed with HTTP status code: %ld", (long)statusCode);
+                return;
+            }
+            
+            /* Save items to Core Data */
+            
+            DataManager *dMgr = [DataManager sharedInstance];
+            [dMgr saveJSONDataToCD:x.first];
+        }];
+
+ 
+    
 }
 
 #pragma mark - table view

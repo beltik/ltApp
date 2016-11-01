@@ -13,24 +13,25 @@
 
 @implementation ApiManager
 
--(RACSignal*)getItems{
- return  [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
++ (ApiManager*)sharedInstance
+{
+    static ApiManager *_sharedInstance = nil;
+    
+    static dispatch_once_t oncePredicate;
+    
+    
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[ApiManager alloc] init];
+    });
+    
+    return _sharedInstance;
 }
 
-//-(void)getItemsWithEndpoints:(NSString*)endpoint{
-//    
-//    RACSignal *sign = [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
-//    [[sign throttle:0.25] subscribeNext:^(id x) {
-//        DataManager *dMgr = [[DataManager alloc]init];
-//        [dMgr saveJSONDataToCD:x];
-//    } ];
-//
-//
-//}
 
 
-
-
+-(RACSignal*)getItems{
+    return  [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
+}
 
 
 

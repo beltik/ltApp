@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    ApiManager *mgr = [[ApiManager alloc]init];
+    ApiManager *mgr = [ApiManager sharedInstance];
 
     RACSignal *sign = [RACSignal interval:CHANGE_INTERVAL onScheduler:[RACScheduler mainThreadScheduler]];
     [sign subscribeNext:^(id x) {
@@ -36,7 +36,7 @@
             
             /* Save items to Core Data */
             
-            DataManager *dMgr = [[DataManager alloc]init];
+            DataManager *dMgr = [DataManager sharedInstance];
             [dMgr saveJSONDataToCD:x.first];
         }];
         

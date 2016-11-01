@@ -10,6 +10,8 @@
 
 @interface DataManager : NSObject
 
++ (DataManager*)sharedInstance;
+
 -(void)saveJSONDataToCD:(NSArray*)data;
 -(NSArray*)storedItems;
 

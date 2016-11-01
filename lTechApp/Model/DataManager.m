@@ -23,6 +23,23 @@
 #define JS_FULL_TEXT @"text"
 #define JS_TITLE @"title"
 
++ (DataManager*)sharedInstance
+{
+    static DataManager *_sharedInstance = nil;
+    
+    static dispatch_once_t oncePredicate;
+    
+    
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[DataManager alloc] init];
+    });
+    
+    return _sharedInstance;
+}
+
+
+
+
 
 -(void)saveJSONDataToCD:(NSArray *)data{
     

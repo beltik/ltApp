@@ -10,6 +10,8 @@
 
 @interface ApiManager : NSObject
 
++(ApiManager*)sharedInstance;
+
 -(RACSignal*)getItems;
 
 @end
