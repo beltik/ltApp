@@ -40,11 +40,11 @@
 
 -(void)initialize{
     
-    [self createUI];
+    [self createUserInterface];
     [self createConstraints];
 }
 
--(void)createUI{
+-(void)createUserInterface{
     
     _containerView = [UIView new];
     _containerView.layer.borderColor = [UIColor blackColor].CGColor;

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DetailViewControllerViewModel.h"
 #import "ModelBinding.h"
-#import "BaseViewControllerProtocol.h"
+#import "BaseViewCreationProtocol.h"
 
-@interface DetailViewController : UIViewController <ModelBinding, BaseViewControllerProtocol>
+@interface DetailViewController : UIViewController <BaseViewCreationProtocol, UITableViewDelegate, UITableViewDataSource>
 
 -(instancetype)initWithModel:(id)viewModel;
 

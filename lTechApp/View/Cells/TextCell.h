@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseCell.h"
-#import "CoreDataBinding.h"
+#import "CellBinding.h"
 #import "BaseViewCreationProtocol.h"
 
 
-@interface ItemCell : BaseCell <CoreDataBinding, BaseViewCreationProtocol>
-
--(void)bindWithManagedObject:(id)managedObject;
+@interface TextCell : BaseCell <CellBinding, BaseViewCreationProtocol>
 
 @end

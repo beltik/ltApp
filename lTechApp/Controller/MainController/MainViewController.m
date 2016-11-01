@@ -109,34 +109,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    ItemCell<CoreDataBinding> *iCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
-    
-    if(!iCell){
-        iCell = [self.tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
-    }
-    
-    /* bind cell */
-    [self configureCell:iCell atIndexPath:indexPath];
-    
-    [iCell setNeedsUpdateConstraints];
-    [iCell updateConstraintsIfNeeded];
-    
-    iCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(iCell.bounds));
-    
-    [iCell setNeedsLayout];
-    [iCell layoutIfNeeded];
-    
-    CGFloat height = [iCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    
-    height += 1.0f;
-    
-    return height;
-    
-}
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return DEFAULT_CELL_HEIGHT;
@@ -158,9 +130,9 @@
 {
     ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
-    if (!cell) {
+    if (!cell)
         cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
-    }
+    
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];

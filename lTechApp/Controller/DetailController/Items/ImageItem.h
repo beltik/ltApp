@@ -1,5 +1,5 @@
 //
-//  BaseViewController.h
+//  ImageItem.h
 //  lTechApp
 //
 //  Created by Necrosoft on 01/11/2016.
@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BaseViewControllerProtocol <NSObject>
+@interface ImageItem : NSObject
 
--(void)createUserInterface;
--(void)createConstraints;
+@property (nonatomic) NSString *imageLink;
 
 @end
