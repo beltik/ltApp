@@ -170,9 +170,8 @@
                         NSError *error = nil;
                         if (![[self managedObjectContext] save:&error]) {
                             NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-                        }   else {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefresh object:nil];
-                        }                    }
+                        }
+                    }
                 }
                 
             }
@@ -199,8 +198,6 @@
     NSError *error = nil;
     if (![[self managedObjectContext] save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }   else {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefresh object:nil];
     }
 }
 
@@ -213,9 +210,7 @@
     NSError *error = nil;
     if (![[self managedObjectContext] save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }   else {
-      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefresh object:nil];
-    }
+    }  
     
 }
 

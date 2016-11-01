@@ -45,10 +45,6 @@
     
     [self createBarButton];
     
-//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kNotificationRefresh object:nil] subscribeNext:^(id x) {
-//        NSLog(@"should reload");
-//        [self.tableView reloadData];
-//    }];
 }
 
 -(void)createBarButton{
@@ -146,13 +142,29 @@
         return _frc;
     }
     
+    NSString *sortCase;
+    switch (self.sortOrder) {
+        case tableSortServer:
+            sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
+            break;
+            
+        case tableSortDate:
+            sortCase = [NSString stringWithFormat:@"%@", CD_DATE];
+            break;
+            
+        default:
+            sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
+            break;
+    }
+    
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:CD_ENTITY_NAME  inManagedObjectContext:self.getManagedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:[NSString stringWithFormat:@"%@", CD_SORT] ascending:NO];
+                              initWithKey:sortCase ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:BATCH_SIZE];

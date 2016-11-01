@@ -29,7 +29,6 @@
 #define CD_TITLE @"itemTitle"
 #define CD_ENTITY_NAME @"Item"
 #define CHANGE_INTERVAL 5
-#define kNotificationRefresh @"kNotificationRefresh"
 
 
 #endif
