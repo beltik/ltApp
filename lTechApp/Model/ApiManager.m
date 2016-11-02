@@ -27,6 +27,8 @@
     return _sharedInstance;
 }
 
+/* Get data from API */
+
 -(RACSignal*)getItems{
     return  [[NetworkInterface getManager] rac_GET:[Endpoints endpoint] parameters:nil];
 }

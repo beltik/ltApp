@@ -31,6 +31,7 @@
 -(void)viewDidLoad{
     
     [super viewDidLoad];
+    [self createBarButton];
     
     /* Fetched results controller */
     
@@ -39,11 +40,9 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         exit(-1);  // Fail
     }
-    
-    [self createBarButton];
-    
 }
 
+/* Change table sort depending of segmented controll value */
 
 - (IBAction)sortOrderChanged:(id)sender {
     
@@ -66,11 +65,11 @@
     CGRect frameimg = CGRectMake(0, 0, 22, 22);
     UIButton *imgBtn = [[UIButton alloc] initWithFrame:frameimg];
     [imgBtn setBackgroundImage:image forState:UIControlStateNormal];
+    [imgBtn setShowsTouchWhenHighlighted:YES];
     imgBtn.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         
         ApiManager *mgr = [ApiManager sharedInstance];
-        
-        [[mgr.getItems throttle:0.5] subscribeNext:^(RACTuple * x) {
+        [mgr.getItems subscribeNext:^(RACTuple * x) {
             
             /* Handle error */
             NSHTTPURLResponse *response = x.second;
@@ -88,7 +87,6 @@
         
         return [RACSignal empty];
     }];
-    [imgBtn setShowsTouchWhenHighlighted:YES];
     
     self.bbiRefresh =[[UIBarButtonItem alloc] initWithCustomView:imgBtn];
     self.navigationItem.rightBarButtonItem = self.bbiRefresh;
@@ -130,7 +128,7 @@
         cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
     
     
-    // Configure the cell...
+    /* Configure the cell */
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -145,6 +143,8 @@
 #pragma mark - fetced results controller
 
 -(void)updateFetchedResultsController{
+    
+    /* Change sort order depending of segmented control value */
     
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
     NSString *sortCase;
@@ -197,19 +197,7 @@
     }
     
     NSString *sortCase;
-    switch (self.sortOrder) {
-        case tableSortServer:
-            sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
-            break;
-            
-        case tableSortDate:
-            sortCase = [NSString stringWithFormat:@"%@", CD_DATE];
-            break;
-            
-        default:
-            sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
-            break;
-    }
+    sortCase = [NSString stringWithFormat:@"%@", CD_SORT];
     
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

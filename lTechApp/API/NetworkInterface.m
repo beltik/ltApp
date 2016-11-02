@@ -1,6 +1,5 @@
 //
 //  NetworkInterface.m
-//  medsolutions
 //
 
 #import "NetworkInterface.h"

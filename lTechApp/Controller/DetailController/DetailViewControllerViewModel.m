@@ -19,6 +19,8 @@
 
 @implementation DetailViewControllerViewModel
 
+/* Get data from specific managed object */
+
 -(void)bindWithManagedObject:(Item*)managedObject{
     
     self.itemTitle = managedObject.itemTitle;
