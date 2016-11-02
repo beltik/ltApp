@@ -165,21 +165,6 @@
 			path = DetailController;
 			sourceTree = "<group>";
 		};
-		716571511DC4D07700C3CB94 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				716571521DC4D08200C3CB94 /* Cells */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		716571521DC4D08200C3CB94 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		716571531DC5F72700C3CB94 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,7 +244,6 @@
 		71EE74E21DC0C9C700B03AC2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				716571511DC4D07700C3CB94 /* Views */,
 				7165713C1DC4B21500C3CB94 /* Protocols */,
 				71EE74E81DC0CA6100B03AC2 /* Categories */,
 				71EE74E31DC0C9D700B03AC2 /* Constants.h */,

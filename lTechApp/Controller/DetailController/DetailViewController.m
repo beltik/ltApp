@@ -41,6 +41,8 @@
     [self createConstraints];
 }
 
+#pragma mark - table view
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return DEFAULT_CELL_HEIGHT;

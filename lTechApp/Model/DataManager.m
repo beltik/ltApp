@@ -176,7 +176,7 @@
                             [[self managedObjectContext] deleteObject:managedObject];
                         }
                         
-                        /*Save context to write to store */
+                        /* Save context to write to store */
                         
                         NSError *error = nil;
                         if (![[self managedObjectContext] save:&error]) {
