@@ -87,6 +87,8 @@ static NSDateFormatter *df;
 
 #pragma mark - comparsion
 
+/* Methods to check whether current ItemModel object is equal to another ItemModel */
+
 -(BOOL)isEqual:(ItemModel*)object{
     
     if  (([self.itemDate isEqualToDate:object.itemDate]) &&

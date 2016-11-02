@@ -49,7 +49,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wg7-G1-X1D">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="4bH-bd-hPp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="4bH-bd-hPp"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bbiRefresh" destination="4bH-bd-hPp" id="aI4-N5-NEy"/>

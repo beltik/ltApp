@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    /* Get items from API. Repeat with Change Interval (default 5 second) */
+    
     ApiManager *mgr = [ApiManager sharedInstance];
 
     RACSignal *sign = [RACSignal interval:CHANGE_INTERVAL onScheduler:[RACScheduler mainThreadScheduler]];

@@ -37,10 +37,6 @@
     return _sharedInstance;
 }
 
-
-
-
-
 -(void)saveJSONDataToCD:(NSArray *)data{
     
     NSArray *old, *modif, *new;
@@ -75,7 +71,6 @@
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:CD_ENTITY];
     
-    /* Back to model */
     NSArray *storedArr = @[];
     NSMutableArray *mutArr = @[].mutableCopy;
     storedArr = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -104,18 +99,17 @@
             oldItem = oldItems[oldIidx];
             newItem = newItems[idx];
 
-          /*   Если объект из старого массива не равен объекту из нового массива он новый. Добавляем его, если он уже не был добавлен в результирующий массив */
-            
+            /* If object from old array is not equal to object from new array, consider it as new. Add it, if it is not already added to result array */
             
             if ([oldItem isSameId:newItem]){
                 
               isHaveNewObject = NO;
                 
-                /* Объект уже есть. Проверяем на необходимость обновления */
-                if (![oldItem isSameText:newItem]){
+                /* Already have an object, check for neccesity of update */
+
+                 if (![oldItem isSameText:newItem]){
                     
-                    /* Обновляем объект в базе */
-                    /* Получаем объект из базы */
+                    
                     NSFetchRequest *request = [[NSFetchRequest alloc] init];
                     [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %i", [newItem.itemId integerValue]];
@@ -124,9 +118,8 @@
                     NSError *error;
                     NSArray *results = [[self managedObjectContext] executeFetchRequest:request error:&error];
                   
-                    /* Обновляем параметры */
+                    /* Update item */
                     if (results.count > 0){
-                        
                     [self updateObject:results[0] withItem:newItem];
                     }
     
@@ -136,7 +129,7 @@
 
         }];
         
-        /* Объекта с таким ID не найдено. Добавляем новый объект. Проверяем не был ли он уже добавлен. */
+        /* Have not found object with that ID. Add it as new object. Check, whether it was already added */
         if (isHaveNewObject)
             [self addRecordWithItem:newItems[idx]];
         
@@ -162,14 +155,14 @@
             newItem = newItems[i];
             
             if ([oldItem isSameId:newItem]){
-                /* Объект не устарел и присутствует в новой выборке */
+                /* Object is up to date and exist in current array */
                 [mutArr addObject:oldItem];
                 continue;
             }   else {
                 
                 if (oldItems.count == o){
-                    
-                    /*  После прохождения всех элементов массива не было найдено совпадений объектов с таким ID, следовательно он отсутствует в новой выборке и его можно удалить. */
+      
+                    /* After enumerate through an array we have not found object with same ID, therefore it outdated and we can delete it */
                      
                     NSFetchRequest *request = [[NSFetchRequest alloc] init];
                     [request setEntity:[NSEntityDescription entityForName:CD_ENTITY inManagedObjectContext:[self managedObjectContext]]];
@@ -182,7 +175,9 @@
                         for(NSManagedObject *managedObject in results){
                             [[self managedObjectContext] deleteObject:managedObject];
                         }
-                        //Save context to write to store
+                        
+                        /*Save context to write to store */
+                        
                         NSError *error = nil;
                         if (![[self managedObjectContext] save:&error]) {
                             NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
@@ -231,6 +226,8 @@
 }
 
 #pragma mark - common
+
+/* Method to get ItemModel objects from response */
 
 -(NSArray*)itemsFromJSONResponse:(NSArray*)response{
     
