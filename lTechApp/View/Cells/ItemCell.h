@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseCell.h"
 #import "CoreDataBinding.h"
-#import "BaseViewCreationProtocol.h"
 
 
-@interface ItemCell : BaseCell <CoreDataBinding, BaseViewCreationProtocol>
+@interface ItemCell : BaseCell <CoreDataBinding>
 
 -(void)bindWithManagedObject:(id)managedObject;
 

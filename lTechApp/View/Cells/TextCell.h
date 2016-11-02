@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseCell.h"
 #import "CellBinding.h"
-#import "BaseViewCreationProtocol.h"
 
 
-@interface TextCell : BaseCell <CellBinding, BaseViewCreationProtocol>
+@interface TextCell : BaseCell <CellBinding>
 
 @end

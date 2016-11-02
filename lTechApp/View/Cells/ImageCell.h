@@ -8,8 +8,7 @@
 
 #import "BaseCell.h"
 #import "CellBinding.h"
-#import "BaseViewCreationProtocol.h"
 
-@interface ImageCell : BaseCell <CellBinding, BaseViewCreationProtocol>
+@interface ImageCell : BaseCell <CellBinding>
 
 @end

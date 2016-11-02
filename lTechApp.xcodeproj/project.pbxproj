@@ -11,8 +11,6 @@
 		716571461DC4C58800C3CB94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571451DC4C58800C3CB94 /* MainViewController.m */; };
 		716571501DC4D02400C3CB94 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165714F1DC4D02400C3CB94 /* ItemCell.m */; };
 		716571561DC5F73F00C3CB94 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571551DC5F73F00C3CB94 /* BaseCell.m */; };
-		7165715B1DC63A3000C3CB94 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 716571581DC63A3000C3CB94 /* Item+CoreDataProperties.m */; };
-		7165715C1DC63A3000C3CB94 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165715A1DC63A3000C3CB94 /* Item.m */; };
 		718165391DC0EDC100C5253E /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 718165381DC0EDC100C5253E /* DataManager.m */; };
 		7181653B1DC0F1E000C5253E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7181653A1DC0F1E000C5253E /* CoreData.framework */; };
 		7181653F1DC115AF00C5253E /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7181653E1DC115AF00C5253E /* ItemModel.m */; };
@@ -23,6 +21,8 @@
 		71C857451DC8F4FA000E2A4A /* ImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C857441DC8F4FA000E2A4A /* ImageItem.m */; };
 		71C857481DC8F53E000E2A4A /* TextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C857471DC8F53E000E2A4A /* TextItem.m */; };
 		71C8574B1DC90544000E2A4A /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C8574A1DC90544000E2A4A /* TextCell.m */; };
+		71C857501DC9FA2A000E2A4A /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C8574D1DC9FA2A000E2A4A /* Item.m */; };
+		71C857511DC9FA2A000E2A4A /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C8574F1DC9FA2A000E2A4A /* Item+CoreDataProperties.m */; };
 		71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74C71DC0BA3C00B03AC2 /* main.m */; };
 		71EE74CB1DC0BA3C00B03AC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */; };
 		71EE74D11DC0BA3C00B03AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EE74CF1DC0BA3C00B03AC2 /* Main.storyboard */; };
@@ -47,10 +47,6 @@
 		7165714F1DC4D02400C3CB94 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		716571541DC5F73F00C3CB94 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		716571551DC5F73F00C3CB94 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
-		716571571DC63A3000C3CB94 /* Item+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Item+CoreDataProperties.h"; path = "../../Controller/MainController/Item+CoreDataProperties.h"; sourceTree = "<group>"; };
-		716571581DC63A3000C3CB94 /* Item+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Item+CoreDataProperties.m"; path = "../../Controller/MainController/Item+CoreDataProperties.m"; sourceTree = "<group>"; };
-		716571591DC63A3000C3CB94 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../../Controller/MainController/Item.h; sourceTree = "<group>"; };
-		7165715A1DC63A3000C3CB94 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = ../../Controller/MainController/Item.m; sourceTree = "<group>"; };
 		7165715E1DC63B8E00C3CB94 /* CoreDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataBinding.h; sourceTree = "<group>"; };
 		718165371DC0EDC100C5253E /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		718165381DC0EDC100C5253E /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -62,7 +58,6 @@
 		71C857341DC8CE70000E2A4A /* DetailViewControllerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerViewModel.h; sourceTree = "<group>"; };
 		71C857351DC8CE70000E2A4A /* DetailViewControllerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerViewModel.m; sourceTree = "<group>"; };
 		71C857371DC8CF3C000E2A4A /* ModelBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBinding.h; sourceTree = "<group>"; };
-		71C857381DC8D42F000E2A4A /* BaseViewCreationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCreationProtocol.h; sourceTree = "<group>"; };
 		71C857391DC8D55C000E2A4A /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		71C8573A1DC8D55C000E2A4A /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		71C8573E1DC8F209000E2A4A /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
@@ -74,10 +69,14 @@
 		71C857471DC8F53E000E2A4A /* TextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextItem.m; sourceTree = "<group>"; };
 		71C857491DC90544000E2A4A /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
 		71C8574A1DC90544000E2A4A /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		71C8574C1DC9FA2A000E2A4A /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		71C8574D1DC9FA2A000E2A4A /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		71C8574E1DC9FA2A000E2A4A /* Item+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataProperties.h"; sourceTree = "<group>"; };
+		71C8574F1DC9FA2A000E2A4A /* Item+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataProperties.m"; sourceTree = "<group>"; };
 		71EE74C31DC0BA3B00B03AC2 /* lTechApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lTechApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EE74C71DC0BA3C00B03AC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
-		71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
+		71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71EE74D01DC0BA3C00B03AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71EE74D31DC0BA3C00B03AC2 /* lTechApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = lTechApp.xcdatamodel; sourceTree = "<group>"; };
 		71EE74D51DC0BA3C00B03AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,7 +126,6 @@
 				7165715E1DC63B8E00C3CB94 /* CoreDataBinding.h */,
 				71C857411DC8F22B000E2A4A /* CellBinding.h */,
 				71C857371DC8CF3C000E2A4A /* ModelBinding.h */,
-				71C857381DC8D42F000E2A4A /* BaseViewCreationProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -194,10 +192,10 @@
 		7165715D1DC63A5100C3CB94 /* CoreData object */ = {
 			isa = PBXGroup;
 			children = (
-				716571571DC63A3000C3CB94 /* Item+CoreDataProperties.h */,
-				716571581DC63A3000C3CB94 /* Item+CoreDataProperties.m */,
-				716571591DC63A3000C3CB94 /* Item.h */,
-				7165715A1DC63A3000C3CB94 /* Item.m */,
+				71C8574C1DC9FA2A000E2A4A /* Item.h */,
+				71C8574D1DC9FA2A000E2A4A /* Item.m */,
+				71C8574E1DC9FA2A000E2A4A /* Item+CoreDataProperties.h */,
+				71C8574F1DC9FA2A000E2A4A /* Item+CoreDataProperties.m */,
 			);
 			path = "CoreData object";
 			sourceTree = "<group>";
@@ -235,12 +233,13 @@
 			isa = PBXGroup;
 			children = (
 				71EE74EE1DC0CD5800B03AC2 /* API */,
-				71EE74EC1DC0CAAF00B03AC2 /* Delegate */,
 				71EE74E91DC0CA8D00B03AC2 /* Controller */,
 				71EE74EA1DC0CA8D00B03AC2 /* Model */,
 				71EE74EB1DC0CA8D00B03AC2 /* Views */,
 				71EE74E21DC0C9C700B03AC2 /* Base */,
 				71EE74E11DC0C78000B03AC2 /* prefix.pch */,
+				71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */,
+				71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */,
 				71EE74DA1DC0BA3C00B03AC2 /* Info.plist */,
 				71EE74D21DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld */,
 				71EE74D51DC0BA3C00B03AC2 /* Assets.xcassets */,
@@ -313,15 +312,6 @@
 			);
 			name = Views;
 			path = View;
-			sourceTree = "<group>";
-		};
-		71EE74EC1DC0CAAF00B03AC2 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				71EE74C91DC0BA3C00B03AC2 /* AppDelegate.h */,
-				71EE74CA1DC0BA3C00B03AC2 /* AppDelegate.m */,
-			);
-			path = Delegate;
 			sourceTree = "<group>";
 		};
 		71EE74EE1DC0CD5800B03AC2 /* API */ = {
@@ -476,6 +466,7 @@
 				71C857331DC8CDFE000E2A4A /* DetailViewController.m in Sources */,
 				716571561DC5F73F00C3CB94 /* BaseCell.m in Sources */,
 				71EE74D41DC0BA3C00B03AC2 /* lTechApp.xcdatamodeld in Sources */,
+				71C857511DC9FA2A000E2A4A /* Item+CoreDataProperties.m in Sources */,
 				71EE74F11DC0CD6A00B03AC2 /* Endpoints.m in Sources */,
 				71EE74FA1DC0CF6700B03AC2 /* UIFont+Custom.m in Sources */,
 				71EE74F41DC0CD7700B03AC2 /* NetworkInterface.m in Sources */,
@@ -485,11 +476,10 @@
 				71EE74F71DC0CF5800B03AC2 /* UIColor+Custom.m in Sources */,
 				71628C7C1DC6705000C86225 /* NSString+WithoutScreening.m in Sources */,
 				718165391DC0EDC100C5253E /* DataManager.m in Sources */,
-				7165715C1DC63A3000C3CB94 /* Item.m in Sources */,
+				71C857501DC9FA2A000E2A4A /* Item.m in Sources */,
 				71C8573B1DC8D55C000E2A4A /* UIColor+HexString.m in Sources */,
 				71EE74C81DC0BA3C00B03AC2 /* main.m in Sources */,
 				71C8574B1DC90544000E2A4A /* TextCell.m in Sources */,
-				7165715B1DC63A3000C3CB94 /* Item+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
